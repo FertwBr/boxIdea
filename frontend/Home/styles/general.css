@@ -1,0 +1,54 @@
+body {
+  font-family: 'Roboto', sans-serif; 
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  
+  margin: 0;
+  background-image: radial-gradient(circle, #9A1BFF 0%, #2B1099 100%);
+}
+
+nav {
+  width: 120px;
+  padding: 1rem;
+  background: #000000;
+}
+
+.main-text-icon {
+  color: white;
+  font-size: 2em; 
+  margin: 0; 
+}
+
+.main-container {
+  text-align: center;
+  padding: 2rem; 
+  border-radius: 10px; 
+}
+
+.welcome-text {
+  color: white;
+  font-size: 1.5em; 
+  margin-bottom: 2rem; 
+}
+
+.home-buttons {
+  display: flex;
+  flex-direction: column; 
+  gap: 1rem; 
+}
+
+.aprender-button, .colaborar-button {
+  padding: 1rem 2rem;
+  font-size: 1.1em;
+  background-color: #00b0ff; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.aprender-button:hover, .colaborar-button:hover {
+  background-color: #007bff; 
+}

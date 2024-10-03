@@ -1,0 +1,14 @@
+nav {
+  width: 100%; 
+  padding: 1rem; 
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.3); 
+  font-family: "Jersey 10", sans-serif; /* Fonte aplicada ao nav */
+}
+
+.main-text-icon {
+  color: white;
+  font-size: 2em; 
+  margin: 0; 
+  letter-spacing: 2px;
+}

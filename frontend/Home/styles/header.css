@@ -11,4 +11,15 @@ nav {
   font-size: 2em; 
   margin: 0; 
   letter-spacing: 2px;
+  cursor: pointer;
+
+  transition: opacity 0.3s;
+}
+
+.main-text-icon:hover {
+  opacity: 0.7; 
+}
+
+.main-text-icon:active {
+  opacity: 0.5; 
 }

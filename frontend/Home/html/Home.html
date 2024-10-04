@@ -15,6 +15,7 @@
     <link rel="icon" type="image/x-icon" href="/frontend/images/favicon.ico">
 </head>
 <body>
+    <!-- Header -->
     <div class="upper-background-container">
         <div class="upper-square-container">
             <img src="/frontend/images/Main/Background/upper-square.svg" alt="Quadrado Superior" class="upper-square">
@@ -25,35 +26,57 @@
             <h1 class="main-text-icon">BOXIDEA</h1>
         </a>
     </nav>
+
+    <!-- Section for welcome message and buttons -->
     <main>
-        <div class="main-container">
+        <section class="main-container">
             <h1 class="welcome-text">Bem vindo(a),<br>como deseja prosseguir?</h1>
-            <div class="home-buttons">  
-                    <a href="/frontend/Learn/Learn.html" class="button-link"> 
+            <div class="home-buttons">
+                <!-- Buttons to navigate -->
+                <article>
+                    <a href="/frontend/Learn/Learn.html" class="button-link">
                         <button class="aprender-button">
-                            <img src="/frontend/images/Main/icons/aprender-icon.svg" alt="Ícone Aprender" class="button-icon"> 
+                            <img src="/frontend/images/Main/icons/aprender-icon.svg" alt="Ícone Aprender" class="button-icon">
                             Quero Aprender
                         </button>
                     </a>
+                </article>
+
+                <article>
                     <a href="/frontend/Collaborate/html/Collaborate.html" class="button-link">
                         <button class="colaborar-button">
-                            <img src="/frontend/images/Main/icons/colaborar-icon.svg" alt="Ícone Colaborar" class="button-icon"> 
+                            <img src="/frontend/images/Main/icons/colaborar-icon.svg" alt="Ícone Colaborar" class="button-icon">
                             Quero Colaborar
                         </button>
                     </a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Background images section -->
+    <section class="background-section">
+        <div class="upper-background-container">
+            <div class="upper-square-container">
+                <img src="/frontend/images/Main/Background/upper-square.svg" alt="Quadrado Superior" class="upper-square">
             </div>
         </div>
-    </main>
-    <div class="bottom-background-container">
-        <div class="robot-container">
-            <img src="/frontend/images/Main/Background/robot.svg" alt="Robô" class="robot-image">
+
+        <div class="bottom-background-container">
+            <div class="robot-container">
+                <img src="/frontend/images/Main/Background/robot.svg" alt="Robô" class="robot-image">
+            </div>
+            <div class="bottom-square-container">
+                <img src="/frontend/images/Main/Background/bottom-square.svg" alt="Quadrado Inferior" class="bottom-square">
+            </div>
         </div>
-        <div class="bottom-square-container">
-            <img src="/frontend/images/Main/Background/bottom-square.svg" alt="Quadrado Inferior" class="bottom-square">
-    </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <p class="footer-text">© 2024 BoxIdea. Todos os direitos reservados.</p>
         </div>
+    </footer>
 </body>
 </html>

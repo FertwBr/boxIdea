@@ -6,12 +6,12 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0;
-  overflow: visible;
+  overflow: hidden;
   background-image: radial-gradient(circle, #9A1BFF 0%, #2B1099 100%);
 }
 
 main {
-  overflow: visible; 
+  overflow: hidden;
   min-height: calc(90vh - 60px);
   display: flex;
   justify-content: center;

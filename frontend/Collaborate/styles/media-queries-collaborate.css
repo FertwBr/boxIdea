@@ -1,0 +1,24 @@
+/* Responsividade */
+@media (max-width: 768px) {
+  .collaborate-titulo-input,
+  .collaborate-nome-input,
+  .collaborate-textarea-input {
+    width: 90%; 
+  }
+
+  .collaborate-enviar-button {
+    width: 90%; 
+  }
+}
+
+@media (max-width: 480px) {
+  .collaborate-titulo-input,
+  .collaborate-nome-input,
+  .collaborate-textarea-input {
+    font-size: 1em; 
+  }
+
+  .collaborate-enviar-button {
+    font-size: 1em; 
+  }
+}

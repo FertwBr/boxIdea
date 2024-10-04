@@ -73,13 +73,40 @@ main {
   z-index: 10;
 }
 
-/* make it all to the bottom */
+.upper-square {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%; 
+  height: auto;
+  z-index: -1; 
+}
+
+.bottom-square {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 65%; 
+  height: auto;
+  z-index: -1; 
+}
+
+.robot-image {
+  position: absolute;
+  bottom: 0; 
+  right: 0; 
+  width: 70%; 
+  height: auto;
+  display: block;
+  z-index: 0; 
+}
+
 .footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
   padding: 1rem;
   text-align: center;
-  font-family: "Jersey 10", sans-serif; /* Fonte aplicada ao footer */
+  font-family: "Jersey 10", sans-serif;
 }

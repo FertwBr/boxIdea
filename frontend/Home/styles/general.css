@@ -58,19 +58,26 @@ main {
   gap: 1rem; 
 }
 
-.aprender-button, .colaborar-button {
+.aprender-button,
+.colaborar-button {
   padding: 1rem 2rem;
   font-size: 1.1em;
   font-weight: 1000;
-  background-color: #4C6BC4; 
+  background-color: #4C6BC4;
   color: white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  z-index: 1;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  width: 100%; 
+  max-width: 300px; 
+  min-width: 250px; 
   transition: background-color 0.3s, transform 0.3s;
 }
+
 
 .aprender-button:hover, .colaborar-button:hover {
   background-color: #324888; 

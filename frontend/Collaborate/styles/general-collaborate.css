@@ -7,63 +7,70 @@ main{
   margin-top: 50px;
 }
 
+
 .collaborate-titulo-input,
-.collaborate-nome-input {
+.collaborate-nome-input,
+.collaborate-textarea-input {
   width: 80%;
-  padding: 0.8rem;
+  padding: 1rem; 
   margin: 0.5rem 0;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s, box-shadow 0.3s;
+  border: 2px solid rgba(76, 107, 196, 0.5); 
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #434D57;
+  transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+  box-sizing: border-box;
+}
+
+.collaborate-titulo-input::placeholder,
+.collaborate-nome-input::placeholder {
+  color: rgba(76, 107, 196, 0.7);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.collaborate-titulo-input:hover,
+.collaborate-nome-input:hover,
+.collaborate-textarea-input:hover {
+  border-color: rgba(76, 107, 196, 1); 
+  background-color: rgba(255, 250, 240, 0.9);
 }
 
 .collaborate-titulo-input:focus,
-.collaborate-nome-input:focus {
-  border-color: rgba(76, 107, 196, 1);
-  box-shadow: 0px 4px 15px rgba(76, 107, 196, 0.3); /
-}
-
-.collaborate-textarea-input {
-  width: 80%;
-  height: 150px;
-  padding: 0.8rem;
-  margin: 0.5rem 0;
-  border-radius: 5px;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-  resize: vertical;
-  overflow-y: auto;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
+.collaborate-nome-input:focus,
 .collaborate-textarea-input:focus {
-  border-color: rgba(76, 107, 196, 1);
+  outline: none;
+  border-color: rgba(76, 107, 196, 1); 
   box-shadow: 0px 4px 15px rgba(76, 107, 196, 0.3);
 }
 
-.collaborate-buttons-container {
-  margin-top: 1rem;
+.collaborate-textarea-input {
+  height: 150px;
+  resize: vertical; 
 }
+
 
 .collaborate-enviar-button {
   padding: 0.8rem 1.5rem;
   font-size: 1.1em;
   font-weight: bold;
-  background: linear-gradient(90deg, rgba(76, 107, 196, 1) 0%, rgba(38, 45, 128, 1) 100%); 
+  background: linear-gradient(45deg, rgba(76, 107, 196, 1), rgba(38, 45, 128, 1)); 
   color: white;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   border: none;
-  border-radius: 5px;
+  border-radius: 10px; 
   cursor: pointer;
-  transition: all 0.3s;
+  transition: transform 0.2s, opacity 0.2s;
+
 }
 
 .collaborate-enviar-button:hover {
-  background: linear-gradient(90deg, rgba(76, 107, 196, 0.9) 0%, rgba(38, 45, 128, 0.9) 100%);
+  transform: scale(1.05);
   opacity: 0.9;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .collaborate-enviar-button:active {
-  opacity: 0.5;
+  transform: scale(0.95); 
+  opacity: 0.7;
 }

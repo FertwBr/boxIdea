@@ -1,0 +1,16 @@
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .search-bar {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bar {
+    width: 95%;
+  }
+
+  .search-input::placeholder {
+    font-size: 12px;
+  }
+}

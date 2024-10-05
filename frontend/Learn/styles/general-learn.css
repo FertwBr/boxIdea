@@ -1,0 +1,60 @@
+/* General styles for the Learn page */
+body {
+  overflow-y: auto; 
+}
+
+main {
+  margin-top: 50px;
+}
+
+.search-bar {
+  position: relative; 
+  display: inline-block; 
+  width: 350px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 15px 45px 15px 15px; 
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box; 
+  background-image: linear-gradient(to right, #8EF9F3, #FFA500);
+  color: #434D57;
+  opacity: 0.95;
+  transition: all 0.3s ease;
+  border-image: linear-gradient(to right, #FFA500, #8EF9F3) 1; 
+}
+
+.search-input::placeholder {
+  color: #6C7A89;
+  font-size: 14px;
+  font-weight: bold; 
+}
+
+.search-input:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 10px rgba(140, 150, 160, 0.5);
+  transform: scale(1.05);
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0px 0px 10px rgba(128, 206, 215, 0.8);
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%); 
+  pointer-events: none;
+  transition: transform 0.2s ease;
+  width: 20px;
+  height: auto;
+}
+
+.search-bar:hover .search-icon {
+  transform: translateY(-50%) rotate(360deg); 
+}
+

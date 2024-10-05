@@ -1,10 +1,24 @@
 /* Header */
 nav {
-  width: 100%; 
-  padding: 1rem; 
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.3); 
-  font-family: "Jersey 10", sans-serif; /* Fonte aplicada ao nav */
+  position: fixed;  
+  top: 0;            
+  left: 0;           
+  width: 100%;      
+  z-index: 100; 
+  background-color: rgba(255, 255, 255, 0.2); 
+  backdrop-filter: blur(10px);
+  font-family: "Jersey 10", sans-serif; 
+  display: flex; 
+  justify-content: center; 
+  padding: 1rem 0;
+  transition: background-color 0.3s;
+}
+
+.header a { 
+  display: flex;
+  align-items: center; 
+  height: 100%;
+  text-align: center; 
 }
 
 .main-text-icon {
@@ -13,7 +27,6 @@ nav {
   margin: 0; 
   letter-spacing: 2px;
   cursor: pointer;
-
   transition: opacity 0.3s;
 }
 
@@ -23,4 +36,12 @@ nav {
 
 .main-text-icon:active {
   opacity: 0.5; 
+}
+
+body {
+  transition: background-color 0.5s; 
+}
+
+body.scrolled {
+  background-color: rgba(0, 0, 0, 0.8);
 }

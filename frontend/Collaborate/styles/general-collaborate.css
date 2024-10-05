@@ -3,6 +3,10 @@ body {
   overflow-y: auto; 
 }
 
+main{
+  margin-top: 50px;
+}
+
 .collaborate-titulo-input,
 .collaborate-nome-input {
   width: 80%;

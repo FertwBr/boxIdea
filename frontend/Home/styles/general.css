@@ -8,6 +8,7 @@ body {
   margin: 0;
   overflow: hidden;
   background-image: radial-gradient(circle, #9A1BFF 0%, #2B1099 100%);
+  min-height: 100vh;
 }
 
 a.button-link {
@@ -32,6 +33,8 @@ a:active {
 }
 
 main {
+  flex: 1;
+  margin-top: 30px;
   overflow: hidden;
   min-height: calc(90vh - 60px);
   display: flex;
@@ -58,14 +61,15 @@ main {
   gap: 1rem; 
 }
 
+
 .aprender-button,
 .colaborar-button {
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem; 
   font-size: 1.1em;
-  font-weight: 1000;
-  background-color: #4C6BC4;
+  font-weight: bold;
+  background: linear-gradient(90deg, rgba(76, 107, 196, 1) 0%, rgba(38, 45, 128, 1) 100%);
   color: white;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -75,17 +79,25 @@ main {
   width: 100%; 
   max-width: 300px; 
   min-width: 250px; 
-  transition: background-color 0.3s, transform 0.3s;
+  height: 50px;
+  transition: all 0.3s;
+}
+
+.aprender-button:hover,
+.colaborar-button:hover {
+  background: linear-gradient(90deg, rgba(76, 107, 196, 0.9) 0%, rgba(38, 45, 128, 0.9) 100%);
+  opacity: 0.9;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.aprender-button:active,
+.colaborar-button:active {
+  opacity: 0.5;
 }
 
 
-.aprender-button:hover, .colaborar-button:hover {
-  background-color: #324888; 
-}
 
-.aprender-button:active, .colaborar-button:active {
-  background-color: #2B1099; 
-}
+
 
 .button-icon {
   width: 1.5em;
@@ -95,7 +107,7 @@ main {
 }
 
 .upper-square {
-  position: absolute;
+  position: fixed; 
   top: 0;
   left: 0;
   width: 40%; 
@@ -104,7 +116,7 @@ main {
 }
 
 .bottom-square {
-  position: absolute;
+  position: fixed; 
   bottom: 0;
   left: 0;
   width: 65%; 
@@ -113,7 +125,7 @@ main {
 }
 
 .robot-image {
-  position: absolute;
+  position: fixed; 
   bottom: -2em; 
   right: 0; 
   width: 70%;
@@ -122,10 +134,30 @@ main {
   z-index: -1; 
 }
 
+.upper-background-container,
+.bottom-background-container {
+  position: absolute; 
+  left: 0;
+  right: 0; 
+  z-index: -1; 
+}
+
+.upper-background-container {
+  top: 0; 
+  height: 40%; 
+}
+
+.bottom-background-container {
+  bottom: 0; 
+  height: 30%;
+}
+
 .footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  position: fixed;  
+  bottom: 0;        
+  left: 0;          
+  width: 100%;     
+  z-index: 100;     
   background-color: rgba(255, 255, 255, 0.3);
   padding: 1rem;
   text-align: center;

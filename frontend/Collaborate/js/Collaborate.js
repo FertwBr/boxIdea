@@ -25,10 +25,13 @@ enviarButton.addEventListener('click', () => {
     })
     .then(data => {
         console.log('Ideia enviada com sucesso:', data);
-        // TODO adicionar código para exibir uma mensagem de sucesso, limpar os campos do formulário, etc.
+        alert('Ideia enviada com sucesso!');
+        tituloInput.value = '';
+        nomeInput.value = ''; 
+        descricaoInput.value = '';
     })
     .catch(error => {
         console.error(error);
-        // TODO adicionar código para exibir uma mensagem de erro para o usuário.
+        alert('Erro ao enviar ideia. Por favor, tente novamente.');
     });
 });

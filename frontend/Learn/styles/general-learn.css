@@ -57,3 +57,26 @@ main {
   transform: translateY(-50%) rotate(360deg); 
   filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
 }
+
+.ideas-section {
+  display: none;
+  margin-top: 20px;
+}
+
+.idea-card {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.idea-card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.idea-card p {
+  font-size: 16px;
+  color: #333;
+}

@@ -26,8 +26,14 @@ const displayIdeas = (ideas) => {
 };
 
 const moveSearchBarToTop = () => {
-    document.querySelector('.main-container').style.marginTop = '10px';
-    ideasSection.style.display = 'block';
+  const mainContainer = document.querySelector('.main-container');
+  const originalMarginTop = getComputedStyle(mainContainer).marginTop;
+  mainContainer.style.marginTop = '10px'; 
+  ideasSection.style.display = 'block';
+
+  if (mainContainer.getBoundingClientRect().top <= 0) {
+      mainContainer.style.marginTop = originalMarginTop;
+  }
 };
 
 searchInput.addEventListener('input', (e) => {

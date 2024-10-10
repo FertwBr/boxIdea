@@ -24,7 +24,11 @@ public class IdeaController {
     }
 
     @GetMapping
-    public List<Idea> getAllIdeas() {
-        return ideaRepository.findAll();
+    public List<Idea> getAllIdeas(@RequestParam(required = false) String query) {
+        if (query == null || query.isEmpty()) {
+            return ideaRepository.findAll();
+        }
+        return ideaRepository.findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCase(query, query);
     }
+
 }

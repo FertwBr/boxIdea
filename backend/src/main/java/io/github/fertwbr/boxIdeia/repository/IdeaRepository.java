@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface IdeaRepository extends JpaRepository<Idea, Long> {
-    List<Idea> findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCase(String title, String description);
+    List<Idea> findByTitleOrDescription(String title, String description);
 }
 

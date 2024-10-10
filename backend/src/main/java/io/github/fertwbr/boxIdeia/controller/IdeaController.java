@@ -28,7 +28,7 @@ public class IdeaController {
         if (query == null || query.isEmpty()) {
             return ideaRepository.findAll();
         }
-        return ideaRepository.findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCase(query, query);
+        return ideaRepository.findByTitleOrDescription(query, query);
     }
 
 }

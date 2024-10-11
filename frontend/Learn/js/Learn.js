@@ -1,41 +1,77 @@
 const searchInput = document.querySelector('.search-input');
 const ideasSection = document.getElementById('ideas-section');
+const loadingBar = document.createElement('div');
+const errorMessage = document.createElement('div');
+const searchIcon = document.getElementById('search-icon');
+
+loadingBar.classList.add('loading-bar');
+ideasSection.appendChild(loadingBar);
+
+errorMessage.classList.add('error-message');
+ideasSection.appendChild(errorMessage);
 
 const fetchIdeas = (query) => {
+    loadingBar.classList.add('show');
+    errorMessage.classList.remove('show'); 
     fetch(`http://localhost:8080/ideas?query=${query}`)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch ideas');
+            }
+            return response.json();
+        })
         .then(data => {
             displayIdeas(data);
-            moveSearchBarToTop();
         })
-        .catch(error => console.error('Erro ao buscar ideias:', error));
+        .catch(error => {
+            console.error('Error fetching ideas:', error);
+            showError('Não foi possivel buscar as ideias :(');
+            
+        })
+        .finally(() => {
+            loadingBar.classList.remove('show');
+        });
 };
 
 const displayIdeas = (ideas) => {
     ideasSection.innerHTML = '';
+    if (ideas.length === 0) {
+        ideasSection.innerHTML = '<p>No results found.</p>';
+        return;
+    }
+    
     ideas.forEach(idea => {
         const ideaCard = document.createElement('div');
         ideaCard.classList.add('idea-card');
         ideaCard.innerHTML = `
             <h2>${idea.title}</h2>
-            <p><strong>Nome:</strong> ${idea.name}</p>
+            <p><strong>Name:</strong> ${idea.name}</p>
             <p>${idea.description}</p>
         `;
         ideasSection.appendChild(ideaCard);
     });
 };
 
-const moveSearchBarToTop = () => {
-  const mainContainer = document.querySelector('.main-container');
-
-  if (mainContainer.getBoundingClientRect().top <= 0) {
-      mainContainer.style.marginTop = originalMarginTop;
-  }
+const showError = (message) => {
+    errorMessage.textContent = message;
+    errorMessage.classList.add('show');
 };
 
-searchInput.addEventListener('input', (e) => {
-    const query = e.target.value;
+const performSearch = () => {
+    const query = searchInput.value.trim();
     if (query) {
         fetchIdeas(query);
+    } else {
+        fetchIdeas('');
     }
+};
+
+searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        performSearch();
+    }
+});
+
+searchIcon.addEventListener('click', () => {
+    performSearch();
 });

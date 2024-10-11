@@ -2,6 +2,27 @@
 @media (max-width: 768px) {
   .search-bar {
     width: 80%;
+    display: flex; 
+    justify-content: center; 
+  }
+
+  .search-input {
+    padding: 10px;
+    flex: 1; 
+  }
+
+  .search-button {
+    padding: 10px; 
+  }
+
+  .search-icon {
+    width: 24px; 
+    height: 24px; 
+  }
+
+  .error-message {
+    width: 90%;
+    font-size: 14px;
   }
 }
 
@@ -11,6 +32,24 @@
   }
 
   .search-input::placeholder {
+    font-size: 12px;
+  }
+
+  .search-input {
+    padding: 8px;
+  }
+
+  .search-button {
+    padding: 8px;
+  }
+
+  .search-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .error-message {
+    width: 100%; 
     font-size: 12px;
   }
 }

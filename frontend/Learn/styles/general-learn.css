@@ -6,13 +6,19 @@ body {
 main {
   margin-top: 50px;
   display: grid;
-  place-items: center; /* Centraliza no main */
+  place-items: center; 
+  position: relative; 
+}
+
+.search-container {
+  display: flex;
+  align-items: center; 
 }
 
 .search-bar {
   position: relative; 
   display: inline-block; 
-  width: 350px;
+  width: 350px; 
 }
 
 .search-input {
@@ -44,20 +50,38 @@ main {
   box-shadow: 0 0 10px rgba(16, 6, 102, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-.search-icon {
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  transform: translateY(-50%); 
-  pointer-events: none;
-  transition: transform 0.2s ease;
-  width: 20px;
-  height: auto;
+.search-button {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%; 
+  padding: 12px; 
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px; 
+  transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s; 
 }
 
-.search-bar:hover .search-icon {
-  transform: translateY(-50%) rotate(360deg); 
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
+.search-button:hover {
+  transform: scale(1.1); 
+  opacity: 0.9;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
+}
+
+.search-button:active {
+  transform: scale(0.95); 
+  opacity: 0.7;
+}
+
+.search-icon {
+  width: 20px; 
+  height: auto;
+  transition: transform 0.2s ease; 
+}
+
+.search-button:hover .search-icon {
+  transform: rotate(360deg); 
 }
 
 #ideas-section {
@@ -91,4 +115,35 @@ main {
   font-size: 1em;
   color: #555;
   line-height: 1.6;
+}
+
+.loading-bar.show {
+  width: 100%;
+}
+
+.error-message {
+  display: none;
+  margin-top: 10px;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: opacity 0.3s ease-in-out; 
+  opacity: 0;
+  background-color: rgba(196, 76, 76, 0.8);
+  color: white;
+  border: 1px solid rgba(196, 76, 76, 1);
+  text-align: center; 
+  width: 80%; 
+  max-width: 400px;
+  z-index: 1; 
+  position: relative; 
+}
+
+.error-message.show {
+  display: block; 
+  opacity: 1;
+}
+
+.error-message:not(.show) {
+  transform: translateY(-10px);
 }

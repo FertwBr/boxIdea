@@ -6,6 +6,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
+import jakarta.persistence.Lob;
+import jakarta.persistence.Column;
+
 
 @Entity
 @Getter
@@ -16,7 +19,13 @@ public class Idea {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 255)
     private String title;
+
+    @Column(length = 100)
     private String name;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String description;
 }

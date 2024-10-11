@@ -15,20 +15,27 @@ enviarButton.addEventListener('click', () => {
 
     tituloInput.classList.remove('error');
     descricaoInput.classList.remove('error');
+    errorMessage.classList.remove('show');
 
-    if (novaIdeia.title === "" || novaIdeia.description === "") {
-        errorMessage.textContent = "Por favor, preencha o título e a descrição.";
+    let errorText = "";
+
+    if (novaIdeia.title === "" && novaIdeia.description === "") {
+        errorText = "Por favor, preencha o título e a descrição.";
+        tituloInput.classList.add('error');
+        descricaoInput.classList.add('error');
+    } else if (novaIdeia.title === "") {
+        errorText = "Por favor, preencha o título.";
+        tituloInput.classList.add('error');
+    } else if (novaIdeia.description === "") {
+        errorText = "Por favor, preencha a descrição.";
+        descricaoInput.classList.add('error');
+    }
+
+    if (errorText) {
+        errorMessage.textContent = errorText;
         errorMessage.classList.add('show');
         successMessage.classList.remove('show');
-
-        if (novaIdeia.title === "") {
-            tituloInput.classList.add('error');
-        }
-        if (novaIdeia.description === "") {
-            descricaoInput.classList.add('error');
-        }
-
-        return; 
+        return;
     }
 
 
@@ -45,21 +52,16 @@ enviarButton.addEventListener('click', () => {
         loadingBar.classList.remove('show');
 
         if (!response.ok) {
-            if (response.status === 400) {
-                errorMessage.textContent = "Por favor, preencha o título e a descrição.";
-            } else {
-                errorMessage.textContent = "Erro ao enviar ideia. Por favor, tente novamente.";
-            }
-
-            errorMessage.classList.add('show');
-            successMessage.classList.remove('show');
-            throw new Error('Erro ao enviar ideia.'); 
+            return response.text().then(text => {
+                throw new Error(text || "Ocorreu um erro ao enviar a ideia.");
+            });
         }
         return response.json();
     })
     .then(data => {
         console.log('Ideia enviada com sucesso:', data);
 
+        successMessage.textContent = "Ideia enviada com sucesso!";
         successMessage.classList.add('show');
         errorMessage.classList.remove('show');
 
@@ -72,7 +74,15 @@ enviarButton.addEventListener('click', () => {
         }, 5000);
     })
     .catch(error => {
-        console.error(error);
-        loadingBar.classList.remove('show');
+        console.error("Erro:", error);
+
+        if (error.message === 'Failed to fetch') {
+            errorMessage.textContent = "Falha ao conectar ao servidor. Verifique sua conexão ou tente novamente mais tarde.";
+        } else {
+            errorMessage.textContent = error.message || "Ocorreu um erro inesperado.";
+        }
+
+        errorMessage.classList.add('show');
+        successMessage.classList.remove('show');
     });
 });

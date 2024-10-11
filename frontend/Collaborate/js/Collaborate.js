@@ -12,6 +12,26 @@ enviarButton.addEventListener('click', () => {
         description: descricaoInput.value
     };
 
+    tituloInput.classList.remove('error');
+    descricaoInput.classList.remove('error');
+
+
+    if (novaIdeia.title === "" || novaIdeia.description === "") {
+        errorMessage.textContent = "Por favor, preencha o título e a descrição."; // Mensagem mais específica
+        errorMessage.classList.add('show');
+        successMessage.classList.remove('show');
+
+        if (novaIdeia.title === "") {
+            tituloInput.classList.add('error');
+        }
+        if (novaIdeia.description === "") {
+            descricaoInput.classList.add('error');
+        }
+
+        return;
+    }
+
+
     fetch('http://localhost:8080/ideas', {
         method: 'POST',
         headers: {
@@ -21,28 +41,39 @@ enviarButton.addEventListener('click', () => {
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Erro ao enviar ideia.');
+
+            if (response.status === 400) {
+                errorMessage.textContent = "Por favor, preencha o título e a descrição.";
+            } else {
+                errorMessage.textContent = "Erro ao enviar ideia. Por favor, tente novamente.";
+            }
+
+            errorMessage.classList.add('show');
+            successMessage.classList.remove('show');
+             throw new Error('Erro ao enviar ideia.');
+
+
+
         }
         return response.json();
     })
     .then(data => {
         console.log('Ideia enviada com sucesso:', data);
 
-        successMessage.style.display = 'block';
-        errorMessage.style.display = 'none';
+        successMessage.classList.add('show');
+        errorMessage.classList.remove('show');
 
         tituloInput.value = '';
         nomeInput.value = '';
         descricaoInput.value = '';
 
         setTimeout(() => {
-            successMessage.style.display = 'none';
+            successMessage.classList.remove('show');
         }, 5000);
     })
     .catch(error => {
         console.error(error);
 
-        errorMessage.style.display = 'block';
-        successMessage.style.display = 'none';
+
     });
 });

@@ -19,9 +19,13 @@ public class IdeaController {
 
     @PostMapping
     public ResponseEntity<Idea> createIdea(@RequestBody Idea idea) {
+        if (idea.getTitle() == null || idea.getTitle().isBlank() || idea.getDescription() == null || idea.getDescription().isBlank()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         Idea savedIdea = ideaRepository.save(idea);
         return new ResponseEntity<>(savedIdea, HttpStatus.CREATED);
     }
+
 
     @GetMapping
     public List<Idea> getAllIdeas(@RequestParam(required = false) String query) {

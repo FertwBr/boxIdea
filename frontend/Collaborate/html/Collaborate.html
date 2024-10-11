@@ -31,7 +31,7 @@
     <!-- Section for welcome message and buttons -->
     <main>
         <section class="main-container">
-            <h1 class="welcome-text">Compartilhe Sua Experi&ecirc;ncia</h1>
+            <h1 class="welcome-text">Compartilhe Sua Experiência</h1>
             <div>
                 <input type="text" class="collaborate-titulo-input" placeholder="Título">
                 <input type="text" class="collaborate-nome-input" placeholder="Digite seu nome (opcional)">
@@ -41,10 +41,11 @@
             </div>
             <div class="collaborate-buttons-container">
                 <button class="collaborate-enviar-button">Enviar</button>
-            </div>
-            <div class="collaborate-message-container">
-                <span class="success-message" style="display: none;">Ideia enviada com sucesso!</span>
-                <span class="error-message" style="display: none;">Erro ao enviar ideia. Por favor, tente novamente.</span>
+                <div class="loading-bar"></div> 
+                <div class="collaborate-message-container">
+                    <span class="success-message">Ideia enviada com sucesso!</span>
+                    <span class="error-message"></span>
+                </div>
             </div>
         </section>
         <!-- Background images section -->

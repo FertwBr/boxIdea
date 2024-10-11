@@ -4,6 +4,7 @@ const descricaoInput = document.querySelector('.collaborate-textarea-input');
 const enviarButton = document.querySelector('.collaborate-enviar-button');
 const successMessage = document.querySelector('.success-message');
 const errorMessage = document.querySelector('.error-message');
+const loadingBar = document.querySelector('.loading-bar');
 
 enviarButton.addEventListener('click', () => {
     const novaIdeia = {
@@ -15,9 +16,8 @@ enviarButton.addEventListener('click', () => {
     tituloInput.classList.remove('error');
     descricaoInput.classList.remove('error');
 
-
     if (novaIdeia.title === "" || novaIdeia.description === "") {
-        errorMessage.textContent = "Por favor, preencha o título e a descrição."; // Mensagem mais específica
+        errorMessage.textContent = "Por favor, preencha o título e a descrição.";
         errorMessage.classList.add('show');
         successMessage.classList.remove('show');
 
@@ -28,9 +28,11 @@ enviarButton.addEventListener('click', () => {
             descricaoInput.classList.add('error');
         }
 
-        return;
+        return; 
     }
 
+
+    loadingBar.classList.add('show');
 
     fetch('http://localhost:8080/ideas', {
         method: 'POST',
@@ -40,8 +42,9 @@ enviarButton.addEventListener('click', () => {
         body: JSON.stringify(novaIdeia)
     })
     .then(response => {
-        if (!response.ok) {
+        loadingBar.classList.remove('show');
 
+        if (!response.ok) {
             if (response.status === 400) {
                 errorMessage.textContent = "Por favor, preencha o título e a descrição.";
             } else {
@@ -50,10 +53,7 @@ enviarButton.addEventListener('click', () => {
 
             errorMessage.classList.add('show');
             successMessage.classList.remove('show');
-             throw new Error('Erro ao enviar ideia.');
-
-
-
+            throw new Error('Erro ao enviar ideia.'); 
         }
         return response.json();
     })
@@ -73,7 +73,6 @@ enviarButton.addEventListener('click', () => {
     })
     .catch(error => {
         console.error(error);
-
-
+        loadingBar.classList.remove('show');
     });
 });

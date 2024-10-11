@@ -7,7 +7,6 @@ main{
   margin-top: 50px;
 }
 
-
 .collaborate-titulo-input,
 .collaborate-nome-input,
 .collaborate-textarea-input {
@@ -21,6 +20,18 @@ main{
   transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
   box-sizing: border-box;
 }
+
+.collaborate-titulo-input.error,
+.collaborate-textarea-input.error {
+    border-color: rgba(196, 76, 76, 1);
+}
+
+.collaborate-titulo-input:focus.error,
+.collaborate-textarea-input:focus.error{
+    box-shadow: 0px 0px 10px rgba(196, 76, 76, 0.8);
+}
+
+
 
 .collaborate-titulo-input::placeholder,
 .collaborate-nome-input::placeholder {
@@ -49,7 +60,6 @@ main{
   resize: vertical; 
 }
 
-
 .collaborate-enviar-button {
   padding: 0.8rem 1.5rem;
   font-size: 1.1em;
@@ -61,7 +71,6 @@ main{
   border-radius: 10px; 
   cursor: pointer;
   transition: transform 0.2s, opacity 0.2s;
-
 }
 
 .collaborate-enviar-button:hover {
@@ -76,15 +85,34 @@ main{
 }
 
 .collaborate-message-container {
-  margin-top: 10px;
+    margin-top: 10px;
+    height: 20px;
+}
+
+.success-message,
+.error-message {
+    display: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: opacity 0.3s ease-in-out; 
+    opacity: 0;
 }
 
 .success-message {
-  color: green;
-  font-weight: bold;
+    background-color: rgba(76, 196, 107, 0.8);
+    color: white;
+    border: 1px solid rgba(76, 196, 107, 1);
 }
 
 .error-message {
-  color: red;
-  font-weight: bold;
+    background-color: rgba(196, 76, 76, 0.8);
+    color: white;
+    border: 1px solid rgba(196, 76, 76, 1);
+}
+
+.success-message.show,
+.error-message.show {
+    display: block;
+    opacity: 1;
 }

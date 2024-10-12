@@ -28,14 +28,14 @@ public class IdeaController {
         return new ResponseEntity<>(savedIdea, HttpStatus.CREATED);
     }
 
-// TODO Arrumar pesquisa
     @Transactional
     @GetMapping
     public List<Idea> getAllIdeas(@RequestParam(required = false) String query) {
         if (query == null || query.isEmpty()) {
             return ideaRepository.findAll();
         }
-        return ideaRepository.findByTitleOrDescription(query, query);
+        return ideaRepository.findByTitleOrDescription(query);
     }
+
 
 }

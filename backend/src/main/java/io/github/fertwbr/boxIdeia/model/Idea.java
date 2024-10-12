@@ -23,7 +23,7 @@ public class Idea {
 
     private String name;
 
-    @Lob
+//    @Lob
     @Column(columnDefinition="TEXT")
     private String description;
 }

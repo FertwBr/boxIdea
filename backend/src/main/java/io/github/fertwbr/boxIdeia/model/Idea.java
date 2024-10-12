@@ -19,13 +19,11 @@ public class Idea {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 255)
     private String title;
 
-    @Column(length = 100)
     private String name;
 
     @Lob
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition="TEXT")
     private String description;
 }

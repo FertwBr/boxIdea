@@ -25,8 +25,7 @@ const fetchIdeas = (query) => {
         })
         .catch(error => {
             console.error('Error fetching ideas:', error);
-            showError('Não foi possivel buscar as ideias :(');
-            
+            showError('Não foi possível buscar as ideias :(');
         })
         .finally(() => {
             loadingBar.classList.remove('show');
@@ -35,8 +34,10 @@ const fetchIdeas = (query) => {
 
 const displayIdeas = (ideas) => {
     ideasSection.innerHTML = '';
+    errorMessage.classList.remove('show'); 
+
     if (ideas.length === 0) {
-        ideasSection.innerHTML = '<p>No results found.</p>';
+        showError('Nenhum resultado encontrado.');
         return;
     }
     

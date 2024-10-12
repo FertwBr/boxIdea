@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface IdeaRepository extends JpaRepository<Idea, Long> {
-    @Query("SELECT i FROM Idea i WHERE i.title LIKE %:title% OR i.description LIKE %:description%")
+    @Query("SELECT i FROM Idea i WHERE CAST(i.title AS string) LIKE %:title% OR CAST(i.description AS string) LIKE %:description%")
     List<Idea> findByTitleOrDescription(String title, String description);
 }

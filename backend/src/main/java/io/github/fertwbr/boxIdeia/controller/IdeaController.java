@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID; // Importa a classe UUID para gerar um nome único
 
 @RestController
 @RequestMapping("/ideas")
@@ -18,12 +19,17 @@ public class IdeaController {
     @Autowired
     private IdeaRepository ideaRepository;
 
-    // TODO Criar opção de automaticamente atribuir nome do usuário anonimo
     @PostMapping
     public ResponseEntity<Idea> createIdea(@RequestBody Idea idea) {
-        if (idea.getTitle() == null || idea.getTitle().isBlank() || idea.getDescription() == null || idea.getDescription().isBlank()) {
+        if (idea.getTitle() == null || idea.getTitle().isBlank() ||
+                idea.getDescription() == null || idea.getDescription().isBlank()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+
+        if (idea.getName() == null || idea.getName().isBlank()) {
+            idea.setName("Anônimo " + UUID.randomUUID().toString().substring(0, 8)); // Nome anônimo
+        }
+
         Idea savedIdea = ideaRepository.save(idea);
         return new ResponseEntity<>(savedIdea, HttpStatus.CREATED);
     }
@@ -36,6 +42,4 @@ public class IdeaController {
         }
         return ideaRepository.findByTitleOrDescription(query);
     }
-
-
 }

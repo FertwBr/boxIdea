@@ -34,7 +34,8 @@ main{
 
 
 .collaborate-titulo-input::placeholder,
-.collaborate-nome-input::placeholder {
+.collaborate-nome-input::placeholder,
+.collaborate-textarea-input::placeholder{
   color: rgba(76, 107, 196, 0.7);
   font-size: 14px;
   font-weight: 500;

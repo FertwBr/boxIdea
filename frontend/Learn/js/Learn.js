@@ -46,7 +46,7 @@ const displayIdeas = (ideas) => {
         ideaCard.classList.add('idea-card');
         ideaCard.innerHTML = `
             <h2>${idea.title}</h2>
-            <p><strong>Name:</strong> ${idea.name}</p>
+            <p><strong>por:</strong> ${idea.name}</p>
             <p>${idea.description}</p>
         `;
         ideasSection.appendChild(ideaCard);

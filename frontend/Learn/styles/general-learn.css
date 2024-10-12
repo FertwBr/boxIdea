@@ -53,7 +53,7 @@ main {
 .search-button {
   background-color: rgba(255, 255, 255, 0.2);
   border: none;
-  border-radius: 50%; 
+  border-radius: 5px;
   padding: 12px; 
   cursor: pointer;
   display: flex;
@@ -94,27 +94,40 @@ main {
 }
 
 .idea-card {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: none;
+  background-color: rgba(10, 25, 41, 0.8); /* Azul escuro com transparência */
+  backdrop-filter: blur(5px); /* Efeito de vidro fosco */
+  border: 2px solid #673ab7; /* Borda roxo */
   padding: 20px;
   margin-bottom: 20px;
   width: 80%;
   max-width: 800px;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    0 2px 5px rgba(0, 0, 0, 0.2), /* Sombra suave */
+    0 4px 10px rgba(0, 0, 0, 0.3), /* Sombra mais intensa */
+    0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra mais espalhada */
+  font-family: 'Roboto', sans-serif; 
 }
 
 .idea-card h2 {
-  font-size: 1.8em;
+  font-size: 2em;
   margin-bottom: 10px;
-  color: #333; 
-  font-weight: 600;
+  color: #ffffff; /* Cor branca para contraste */
+  font-weight: bold;
+  text-align: justify;
 }
 
 .idea-card p {
-  font-size: 1em;
-  color: #555;
+  font-size: 1.1em;
+  color: #f5f5f5; /* Cor clara para contraste */
   line-height: 1.6;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.idea-card strong { 
+  font-weight: bold;
+  color: #ffffff; 
 }
 
 .loading-bar.show {

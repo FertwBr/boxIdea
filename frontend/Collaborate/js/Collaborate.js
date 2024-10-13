@@ -41,7 +41,7 @@ enviarButton.addEventListener('click', () => {
 
     loadingBar.classList.add('show');
 
-    fetch('http://localhost:8080/ideas', {
+    fetch('http://localhost:8080/api/v1/ideas', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID; // Importa a classe UUID para gerar um nome único
 
 @RestController
-@RequestMapping("/ideas")
+@RequestMapping("/api/v1/ideas")
 @CrossOrigin
 public class IdeaController {
 

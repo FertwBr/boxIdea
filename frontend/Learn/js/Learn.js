@@ -13,7 +13,7 @@ ideasSection.appendChild(errorMessage);
 const fetchIdeas = (query) => {
     loadingBar.classList.add('show');
     errorMessage.classList.remove('show'); 
-    fetch(`http://localhost:8080/ideas?query=${query}`)
+    fetch(`http://localhost:8080/api/v1/ideas?query=${query}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to fetch ideas');

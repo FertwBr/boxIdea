@@ -9,7 +9,7 @@
         <relativePath/> </parent>
     <groupId>io.github.fertwbr</groupId>
     <artifactId>boxIdeia</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>boxIdeia</name>
     <description>boxIdeia</description>
     <url/>

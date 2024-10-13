@@ -1,126 +1,115 @@
 # BoxIdea
 
-## Descrição
+## Description
 
-**BoxIdea** é um sistema colaborativo onde os colaboradores podem submeter suas ideias relacionadas ao ambiente de trabalho. As informações enviadas são armazenadas em um banco de dados, permitindo que outros usuários consultem essas ideias, promovendo um ambiente de inovação e troca de conhecimento.
+**BoxIdea** is a collaborative system where employees can submit their ideas related to the work environment. The submitted information is stored in a database, allowing other users to consult these ideas, fostering an environment of innovation and knowledge sharing.
 
-## Funcionalidades
+## Features
 
-- **Submissão de Ideias**: Usuários podem enviar suas ideias, incluindo título, descrição detalhada e nome (opcional).
-- **Consulta de Ideias**: Usuários podem pesquisar ideias com base em palavras-chave no título e na descrição.
-- **Visualização de Ideias**: Os usuários podem visualizar as ideias, incluindo título, nome do autor e descrição.
+- **Idea Submission**: Users can submit their ideas, including title, detailed description, and name (optional).
+- **Idea Search**: Users can search for ideas based on keywords in the title and description.
+- **Idea Viewing**: Users can view ideas, including title, author's name, and description.
 
-## Demonstração
+## Demo
 
-Aqui estão algumas imagens da interface do BoxIdea:
+Here are some images of the BoxIdea interface:
 
-**Página Inicial:**
+**Home Page:**
 
-![Página Inicial](/frontend/images/readme/preview-home.png)
+![Home Page](/frontend/images/readme/preview-home.png)
 
-**Página de Colaboração:**
+**Collaborate Page:**
 
-![Página de Colaboração](/frontend/images/readme/preview-contribuir.png)
-**Página de Aprendizado:**
+![Collaborate Page](/frontend/images/readme/preview-contribuir.png)
 
-![Página de Aprendizado 1](/frontend/images/readme/preview-learn-1.png)
-![Página de Aprendizado 2](/frontend/images/readme/preview-learn-2.png)
+**Learn Page:**
 
-
-## Requisitos
-
-### Requisitos Funcionais
-
-1. **Submissão de Ideias**:  
-   - Permitir que os usuários enviem suas ideias, incluindo título e descrição detalhada. O nome do autor é opcional.
-
-2. **Consulta de Ideias**:  
-   - Implementar uma ferramenta de busca para localizar ideias com base em palavras-chave no título e na descrição.
-
-3. **Visualização de Ideias**:  
-   - Exibir as ideias encontradas na busca, mostrando o título, nome do autor (se fornecido) e a descrição.
-
-### Requisitos Não Funcionais
-
-1. **Disponibilidade**:  
-   - O sistema deve estar disponível 24/7, com o mínimo de tempo de inatividade possível.
-
-2. **Segurança**:
-   - Implementar medidas de segurança para proteger as informações dos usuários. *(TODO: Detalhar medidas de segurança específicas)*
-
-3. **Escalabilidade**:  
-   - O sistema deve ser capaz de lidar com um aumento no número de usuários e no volume de dados. *(TODO: Descrever estratégias de escalabilidade)*
-
-4. **Usabilidade**:  
-   - A interface deve ser simples e intuitiva, facilitando a navegação e o uso.
-
-5. **Manutenibilidade**:  
-   - O código deve ser bem estruturado e documentado para facilitar a manutenção e futuras atualizações.
-
-6. **Compatibilidade**:  
-   - O sistema deve ser compatível com diferentes navegadores e dispositivos. *(TODO: Especificar navegadores e dispositivos suportados)*
+![Learn Page 1](/frontend/images/readme/preview-learn-1.png)
+![Learn Page 2](/frontend/images/readme/preview-learn-2.png)
 
 
-## Tecnologias
+## Requirements
 
-- **Backend**: Java com Spring Boot
-- **Banco de Dados**: PostgreSQL
-- **Frontend**: HTML, CSS e JavaScript
+### Functional Requirements
+
+1. **Idea Submission**:
+   - Allow users to submit their ideas, including title and detailed description. The author's name is optional.
+
+2. **Idea Search**:
+   - Implement a search tool to find ideas based on keywords in the title and description.
+
+3. **Idea Viewing**:
+   - Display the ideas found in the search, showing the title, author's name (if provided), and the description.
+
+### Non-Functional Requirements
+
+1. **Availability**:
+   - The system should be available 24/7, with minimal downtime.
+
+2. **Security**:
+   - Implement security measures to protect user information. *(TODO: Detail specific security measures)*
+
+3. **Scalability**:
+   - The system should be able to handle an increase in the number of users and data volume. *(TODO: Describe scalability strategies)*
+
+4. **Usability**:
+   - The interface should be simple and intuitive, facilitating navigation and use.
+
+5. **Maintainability**:
+   - The code should be well-structured and documented for easy maintenance and future updates.
+
+6. **Compatibility**:
+    - The system should be compatible with various modern web browsers across different devices, including desktops, laptops, tablets, and smartphones.
 
 
-## Instalação e Execução
+## Technologies Used
 
-**Pré-requisitos:**
+- **Backend**: Java with Spring Boot
+- **Database**: PostgreSQL
+- **Frontend**: HTML, CSS, and JavaScript
 
-- Java Development Kit (JDK) 17 ou superior
+
+## Installation and Execution
+
+**Prerequisites:**
+
+- Java Development Kit (JDK) 17 or higher
 - Maven
-- PostgreSQL (e ter um banco de dados configurado)
+- PostgreSQL (and have a database configured)
 
-1. **Clone o repositório:**
+1. **Clone the repository:**
    ```bash
-   git clone https://github.com/seuusuario/boxidea.git 
+   git clone https://github.com/yourusername/boxidea.git 
    ```
-2. **Navegue até o diretório do projeto:**
+2. **Navigate to the project directory:**
    ```bash
    cd boxidea
    ```
-3. **Configure as variáveis de ambiente:**
-   - Crie um arquivo `.env` na raiz do projeto com as seguintes configurações (adapte para o seu ambiente):
+3. **Configure environment variables:**
+   - Create a `.env` file in the project root with the following settings (adapt to your environment):
      ```
-     SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/seu_banco_de_dados
-     SPRING_DATASOURCE_USERNAME=seu_usuario
-     SPRING_DATASOURCE_PASSWORD=sua_senha
+     SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/your_database_name
+     SPRING_DATASOURCE_USERNAME=your_username
+     SPRING_DATASOURCE_PASSWORD=your_password
      ```
-4. **Instale as dependências:**
+4. **Install dependencies:**
    ```bash
    mvn install
    ```
-5. **Execute o projeto:**
+5. **Run the project:**
    ```bash
    mvn spring-boot:run
    ```
 
-## Contribuição
+## Contributing
 
-1. Faça um fork do projeto.
-2. Crie uma branch com sua funcionalidade: `git checkout -b feature/nova-funcionalidade`.
-3. Faça o commit das suas alterações: `git commit -m "Adiciona nova funcionalidade"`.
-4. Envie suas alterações para o repositório original: `git push origin feature/nova-funcionalidade`.
-5. Abra um pull request.
-
-## TODO
-
-- Implementar feedback visual para o usuário na submissão da ideia (sucesso ou erro).
-- Implementar validação de dados no backend e frontend para garantir que título e descrição não sejam vazios.
-- Implementar retorno de lista vazia no backend caso não haja ideias.
-- Adicionar autenticação e autorização para proteger o acesso ao sistema.
-- Melhorar a segurança do sistema. (ex.: adicionar proteção contra CSRF, XSS).
-- Definir e documentar as estratégias de escalabilidade da aplicação.
-- Especificar os navegadores e dispositivos suportados pela aplicação.
-- Adicionar testes unitários e de integração.
-- Criar um Dockerfile para facilitar a implantação.
+1. Fork the project.
+2. Create a branch with your feature: `git checkout -b feature/new-feature`.
+3. Commit your changes: `git commit -m "Add new feature"`.
+4. Push to the branch: `git push origin feature/new-feature`.
+5. Open a pull request.
 
 
-## Licença
+## License
 
-Este projeto está licenciado sob a [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE).

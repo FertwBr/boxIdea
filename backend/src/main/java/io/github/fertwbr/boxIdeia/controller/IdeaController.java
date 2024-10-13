@@ -40,6 +40,6 @@ public class IdeaController {
         if (query == null || query.isEmpty()) {
             return ideaRepository.findAll();
         }
-        return ideaRepository.findByTitleOrDescription(query);
+        return ideaRepository.findByTitleOrDescriptionOrName(query);
     }
 }

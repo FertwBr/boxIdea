@@ -16,10 +16,16 @@ const filters = ["Criatividade", "Inovação", "Produtividade", "Tecnologia", "M
 
 createFilterElements();
 
-const fetchIdeas = (query) => {
+const fetchIdeas = (query, filter) => {
     loadingBar.classList.add('show');
     errorMessage.classList.remove('show');
-    fetch(`http://localhost:8080/api/v1/ideas?query=${query}`)
+
+    let url = `http://localhost:8080/api/v1/ideas?query=${query}`;
+    if (filter) {
+        url = `http://localhost:8080/api/v1/ideas/filter?filter=${filter}`;
+    }
+
+    fetch(url)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to fetch ideas');
@@ -60,7 +66,7 @@ const displayIdeas = (ideas) => {
     });
 };
 
-// TODO Implementar a funcionandlide de filtro
+
 function createFilterElements() {
     filters.forEach(filterName => {
         const label = document.createElement('label');
@@ -83,29 +89,21 @@ function createFilterElements() {
             updateFilterStyles(checkbox);
         });
 
-        if (checkbox.checked) {
-            label.classList.add('selected');
-        }
-
-
         label.addEventListener('mouseenter', () => {
             if (!checkbox.checked) {
-              label.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
-              label.style.transform = "scale(1.05)";
-              label.style.boxShadow = "0px 2px 5px rgba(0,0,0,0.3)";
+                label.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
+                label.style.transform = "scale(1.05)";
+                label.style.boxShadow = "0px 2px 5px rgba(0,0,0,0.3)";
             }
         });
-      
+
         label.addEventListener('mouseleave', () => {
             if (!checkbox.checked) {
                 label.style.backgroundColor = "";
                 label.style.transform = "";
                 label.style.boxShadow = "";
-
-
             }
         });
-
     });
 }
 
@@ -124,34 +122,61 @@ function updateFilterStyles(checkbox) {
         label.style.boxShadow = "0px 2px 5px rgba(0, 0, 0, 0.5)";
         label.classList.add('selected');
     } else {
-
         label.style.backgroundColor = "";
         label.style.color = "";
         label.style.fontWeight = "";
         label.style.boxShadow = "";
         label.classList.remove('selected');
     }
-
 }
 
 function filterIdeas() {
     const selectedFilters = Array.from(document.querySelectorAll('.filter-container input[type="checkbox"]:checked'))
         .map(checkbox => checkbox.value);
 
-    const filteredIdeas = ideas.filter(idea => {
-        return selectedFilters.length === 0 || selectedFilters.some(filter =>
-            idea.description.toLowerCase().includes(filter.toLowerCase()) ||
-            idea.title.toLowerCase().includes(filter.toLowerCase()) ||
-            (idea.name && idea.name.toLowerCase().includes(filter.toLowerCase()))
-        );
-    });
 
-    displayIdeas(filteredIdeas);
+    if (selectedFilters.length === 0) {
+        performSearch();
+        return;
+    }
+
+
+    const filterPromises = selectedFilters.map(filter =>
+        fetch(`http://localhost:8080/api/v1/ideas/filter?filter=${filter}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Erro ao buscar ideias pelo filtro ${filter}`);
+                }
+                return response.json();
+            })
+
+    );
+
+    Promise.all(filterPromises)
+        .then(results => {
+
+            let filteredIdeas = [];
+            results.forEach(result => {
+                filteredIdeas = filteredIdeas.concat(result);
+            });
+
+            const uniqueIdeas = filteredIdeas.filter((idea, index, self) =>
+                index === self.findIndex((i) => (
+                    i.id === idea.id
+                ))
+            );
+
+
+            displayIdeas(uniqueIdeas);
+        })
+        .catch(error => {
+            console.error("Erro na busca por filtro:", error);
+            showError(error.message);
+        });
 }
 
 const performSearch = () => {
     const query = searchInput.value.trim();
-
     fetchIdeas(query);
 };
 

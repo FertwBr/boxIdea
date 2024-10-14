@@ -2,6 +2,7 @@ package io.github.fertwbr.boxIdeia.controller;
 
 import io.github.fertwbr.boxIdeia.model.Idea;
 import io.github.fertwbr.boxIdeia.repository.IdeaRepository;
+import io.github.fertwbr.boxIdeia.service.FilterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,9 @@ public class IdeaController {
     @Autowired
     private IdeaRepository ideaRepository;
 
+    @Autowired
+    private FilterService filterService;
+
     @PostMapping
     public ResponseEntity<Idea> createIdea(@RequestBody Idea idea) {
         if (idea.getTitle() == null || idea.getTitle().isBlank() ||
@@ -27,10 +31,13 @@ public class IdeaController {
         }
 
         if (idea.getName() == null || idea.getName().isBlank()) {
-            idea.setName("Anônimo " + UUID.randomUUID().toString().substring(0, 8)); // Nome anônimo
+            idea.setName("Anônimo " + UUID.randomUUID().toString().substring(0, 8));
         }
 
+        filterService.assignFilters(idea);
+
         Idea savedIdea = ideaRepository.save(idea);
+
         return new ResponseEntity<>(savedIdea, HttpStatus.CREATED);
     }
 
@@ -41,5 +48,10 @@ public class IdeaController {
             return ideaRepository.findAll();
         }
         return ideaRepository.findByTitleOrDescriptionOrName(query);
+    }
+
+    @GetMapping("/filter")
+    public List<Idea> getIdeasByFilter(@RequestParam String filter) {
+        return ideaRepository.findByFilter(filter);
     }
 }

@@ -1,32 +1,35 @@
-/* General styles for the Learn page */
 body {
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 main {
   margin-top: 50px;
   display: grid;
-  place-items: center; 
-  position: relative; 
+  place-items: center;
+  position: relative;
 }
 
 .search-container {
   display: flex;
   align-items: center; 
+  justify-content: center;
+  width: 100%;
+  max-width:
 }
 
 .search-bar {
-  position: relative; 
-  display: inline-block; 
-  width: 350px; 
+    width: 100%;
+    max-width: 600px; 
+    display: flex;
 }
 
 .search-input {
+  flex: 1;
   width: 100%;
-  padding: 15px 45px 15px 15px; 
+  padding: 15px 45px 15px 15px;
   border: none;
   border-radius: 5px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.2);
   color: #FFFFFF;
   opacity: 0.95;
@@ -36,7 +39,7 @@ main {
 .search-input::placeholder {
   color: rgb(255, 255, 255);
   font-size: 14px;
-  font-weight: bold; 
+  font-weight: bold;
 }
 
 .search-input:hover {
@@ -54,59 +57,56 @@ main {
   background-color: rgba(255, 255, 255, 0.2);
   border: none;
   border-radius: 5px;
-  padding: 12px; 
+  padding: 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 10px; 
-  transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s; 
+  margin-left: 10px;
+  transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s;
 }
 
 .search-button:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
   opacity: 0.9;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .search-button:active {
-  transform: scale(0.95); 
+  transform: scale(0.95);
   opacity: 0.7;
 }
 
 .search-icon {
-  width: 20px; 
+  width: 20px;
   height: auto;
-  transition: transform 0.2s ease; 
+  transition: transform 0.2s ease;
 }
 
 .search-button:hover .search-icon {
-  transform: rotate(360deg); 
+  transform: rotate(360deg);
 }
 
 #ideas-section {
   display: flex;
   flex-direction: column;
-  align-items: center; 
-  padding: 20px; 
+  align-items: center;
+  padding: 20px;
   margin-top: 20px;
   width: fit-content;
 }
 
 .idea-card {
   background-color: rgba(10, 25, 41, 0.8);
-  backdrop-filter: blur(5px); 
-  border: 2px solid #673ab7; 
+  backdrop-filter: blur(5px);
+  border: 2px solid #673ab7;
   padding: 20px;
   margin-bottom: 20px;
   width: 80%;
   max-width: 800px;
   border-radius: 10px;
-  box-shadow: 
-    0 2px 5px rgba(0, 0, 0, 0.2),
-    0 4px 10px rgba(0, 0, 0, 0.3),
-    0 8px 20px rgba(0, 0, 0, 0.4);
-  font-family: 'Roboto', sans-serif; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 4px 10px rgba(0, 0, 0, 0.3), 0 8px 20px rgba(0, 0, 0, 0.4);
+  font-family: 'Roboto', sans-serif;
 }
 
 .idea-card h2 {
@@ -125,9 +125,9 @@ main {
   text-align: justify;
 }
 
-.idea-card strong { 
+.idea-card strong {
   font-weight: bold;
-  color: #ffffff; 
+  color: #ffffff;
 }
 
 .loading-bar.show {
@@ -140,23 +140,66 @@ main {
   padding: 0.5rem 1rem;
   border-radius: 5px;
   font-weight: bold;
-  transition: opacity 0.3s ease-in-out; 
+  transition: opacity 0.3s ease-in-out;
   opacity: 0;
   background-color: rgba(196, 76, 76, 0.8);
   color: white;
   border: 1px solid rgba(196, 76, 76, 1);
-  text-align: center; 
-  width: 80%; 
+  text-align: center;
+  width: 80%;
   max-width: 400px;
-  z-index: 1; 
-  position: relative; 
+  z-index: 1;
+  position: relative;
 }
 
 .error-message.show {
-  display: block; 
+  display: block;
   opacity: 1;
 }
 
 .error-message:not(.show) {
   transform: translateY(-10px);
+}
+
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+  width: fit-content;
+}
+
+.filter-container label {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 8px 12px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.filter-container input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.filter-container input[type="checkbox"]:checked + label {
+  background-color: rgba(76, 107, 196, 0.8);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.5); 
+
+}
+
+.filter-container input[type="checkbox"]:not(:checked) + label:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
+
+
 }

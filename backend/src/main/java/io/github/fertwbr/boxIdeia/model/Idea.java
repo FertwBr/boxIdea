@@ -26,6 +26,6 @@ public class Idea {
 
     @ElementCollection
     @CollectionTable(name = "idea_filters", joinColumns = @JoinColumn(name = "idea_id"))
-    @Column(name = "filter") // Nome da coluna na tabela idea_filters
+    @Column(name = "filter")
     private Set<String> filters = new HashSet<>();
 }

@@ -1,14 +1,15 @@
-# BoxIdea
+## BoxIdea - v1.1.0
 
 ## Description
 
-**BoxIdea** is a collaborative system where employees can submit their ideas related to the work environment. The submitted information is stored in a database, allowing other users to consult these ideas, fostering an environment of innovation and knowledge sharing.
+**BoxIdea** is a collaborative platform that empowers employees to submit innovative ideas related to their work environment. It facilitates idea sharing, fosters a culture of innovation, and promotes knowledge exchange within organizations. 
 
 ## Features
 
-- **Idea Submission**: Users can submit their ideas, including title, detailed description, and name (optional).
-- **Idea Search**: Users can search for ideas based on keywords in the title and description.
-- **Idea Viewing**: Users can view ideas, including title, author's name, and description.
+- **Idea Submission:**  Users can submit their ideas with title, detailed description, and optional author's name.
+- **Idea Search:**  Powerful search functionality allows users to find ideas based on keywords in the title and description.
+- **Idea Viewing:**  Users can view ideas in detail, including the title, author's name (if provided), and a comprehensive description.
+- **Idea Filtering:**  Users can now refine their search results by applying filters related to various themes, such as "Creativity," "Innovation," "Productivity," "Technology," "Marketing," and "Design." This allows for focused exploration of ideas based on specific areas of interest.
 
 ## Demo
 
@@ -26,20 +27,23 @@ Here are some images of the BoxIdea interface:
 
 ![Learn Page 1](/frontend/images/readme/preview-learn-1.png)
 ![Learn Page 2](/frontend/images/readme/preview-learn-2.png)
-
+![Learn Page 3](/frontend/images/readme/preview-learn-3.png)
 
 ## Requirements
 
 ### Functional Requirements
 
-1. **Idea Submission**:
+1. **Idea Submission:**
    - Allow users to submit their ideas, including title and detailed description. The author's name is optional.
 
-2. **Idea Search**:
+2. **Idea Search:**
    - Implement a search tool to find ideas based on keywords in the title and description.
 
 3. **Idea Viewing**:
    - Display the ideas found in the search, showing the title, author's name (if provided), and the description.
+
+4. **Idea Filtering:**
+   - Implement a filtering system that allows users to refine their search results based on themes, such as "Creativity," "Innovation," "Productivity," "Technology," "Marketing," and "Design."  Each idea should be categorized with appropriate themes to enable accurate filtering.
 
 ### Non-Functional Requirements
 

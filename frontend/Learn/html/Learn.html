@@ -17,7 +17,6 @@
     <link rel="icon" type="image/x-icon" href="/frontend/images/favicon.ico">
 </head>
 <body>
-    <!-- Header -->
     <div class="upper-background-container">
         <div class="upper-square-container">
             <img src="/frontend/images/Main/Background/upper-square.svg" alt="Quadrado Superior" class="upper-square">
@@ -29,29 +28,28 @@
         </a>
     </nav>
 
-    <!-- Section for welcome message and buttons -->
     <main>
         <section class="main-container">
             <h1 class="welcome-text">Como posso ajudar?</h1>
-            <div class="search-container">
-                <div class="search-bar">
-                    <input type="search" class="search-input" placeholder="Pesquisar">
+            <div class="search-and-filter-container">
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="search" class="search-input" placeholder="Pesquisar">
+                        <button class="search-button" id="search-icon">
+                            <img src="/frontend/images/Main/icons/search-icon.svg" alt="&Iacute;cone de Pesquisa" class="search-icon">
+                        </button>
+                    </div>
                 </div>
-                <button class="search-button" id="search-icon">
-                    <img src="/frontend/images/Main/icons/search-icon.svg" alt="Ícone de Pesquisa" class="search-icon">
-                </button>
+                <div id="filter-container" class="filter-container"></div>
             </div>
         </section>
-        <section id="ideas-section" class="ideas-section">
-        </section>
-        <!-- Background images section -->
+        <section id="ideas-section" class="ideas-section"></section>
         <section class="background-section">
             <div class="upper-background-container">
                 <div class="upper-square-container">
                     <img src="/frontend/images/Main/Background/upper-square.svg" alt="Quadrado Superior" class="upper-square">
                 </div>
             </div>
- 
             <div class="bottom-background-container">
                 <div class="robot-container">
                     <img src="/frontend/images/Main/Background/robot.svg" alt="Rob&ocirc;" class="robot-image">
@@ -63,13 +61,12 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <p class="footer-text">&copy; 2024 BoxIdea. Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <script src="/frontend/Learn/js/Learn.js"></script> 
+    <script src="/frontend/Learn/js/Learn.js"></script>
 </body>
 </html>

@@ -1,13 +1,11 @@
 package io.github.fertwbr.boxIdeia.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import jakarta.persistence.Lob;
-import jakarta.persistence.Column;
+
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -23,7 +21,11 @@ public class Idea {
 
     private String name;
 
-//    @Lob
     @Column(columnDefinition="TEXT")
     private String description;
+
+    @ElementCollection
+    @CollectionTable(name = "idea_filters", joinColumns = @JoinColumn(name = "idea_id"))
+    @Column(name = "filter") // Nome da coluna na tabela idea_filters
+    private Set<String> filters = new HashSet<>();
 }

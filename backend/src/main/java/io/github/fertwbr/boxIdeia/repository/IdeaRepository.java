@@ -12,8 +12,12 @@ import java.util.List;
 public interface IdeaRepository extends JpaRepository<Idea, Long> {
 
     @Query("SELECT i FROM Idea i WHERE LOWER(i.title) LIKE LOWER(CONCAT('%', :query, '%')) " +
-            "OR LOWER(CAST(i.description AS string)) LIKE LOWER(CONCAT('%', :query, '%'))")
-    List<Idea> findByTitleOrDescription(@Param("query") String query);
+            "OR LOWER(CAST(i.description AS string)) LIKE LOWER(CONCAT('%', :query, '%'))" +
+            "OR LOWER(i.name) LIKE LOWER(CONCAT('%', :query, '%'))")
+    List<Idea> findByTitleOrDescriptionOrName(@Param("query") String query);
+
+    @Query("SELECT i FROM Idea i JOIN i.filters f WHERE f = :filter")
+    List<Idea> findByFilter(@Param("filter") String filter);
 }
 
 

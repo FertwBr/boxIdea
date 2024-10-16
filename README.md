@@ -1,4 +1,4 @@
-## BoxIdea - v1.1.0
+## BoxIdea - v1.1.1
 
 ## Description
 

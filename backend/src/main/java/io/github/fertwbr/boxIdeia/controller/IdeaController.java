@@ -8,9 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.UUID; // Importa a classe UUID para gerar um nome único
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/ideas")
@@ -53,5 +54,29 @@ public class IdeaController {
     @GetMapping("/filter")
     public List<Idea> getIdeasByFilter(@RequestParam String filter) {
         return ideaRepository.findByFilter(filter);
+    }
+
+    @PostMapping("/{id}/upvote")
+    public ResponseEntity<Idea> upvoteIdea(@PathVariable Long id) {
+        return updateVote(id, true);
+    }
+
+    @PostMapping("/{id}/downvote")
+    public ResponseEntity<Idea> downvoteIdea(@PathVariable Long id) {
+        return updateVote(id, false);
+    }
+
+    private ResponseEntity<Idea> updateVote(Long id, boolean isUpvote) {
+        Idea idea = ideaRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Ideia não encontrada"));
+
+        if (isUpvote) {
+            idea.setUpvotes(idea.getUpvotes() + 1);
+        } else {
+            idea.setDownvotes(idea.getDownvotes() + 1);
+        }
+
+        ideaRepository.save(idea);
+        return new ResponseEntity<>(idea, HttpStatus.OK);
     }
 }

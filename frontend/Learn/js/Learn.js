@@ -61,11 +61,25 @@ const displayIdeas = (ideas) => {
             <h2>${idea.title}</h2>
             <p><strong>por:</strong> ${idea.name}</p>
             <p>${idea.description}</p>
+            <div class="vote-buttons">
+                <button class="upvote-button" data-idea-id="${idea.id}">
+                    <img src="/frontend/images/Main/icons/up-arrow-icon.svg" alt="Upvote">
+                </button>
+                <span class="votes-count">${idea.upvotes - idea.downvotes}</span>
+                <button class="downvote-button" data-idea-id="${idea.id}">
+                    <img src="/frontend/images/Main/icons/down-arrow-icon.svg" alt="Downvote">
+                </button>
+            </div>
         `;
         ideasSection.appendChild(ideaCard);
+
+        const upvoteButton = ideaCard.querySelector('.upvote-button');
+        const downvoteButton = ideaCard.querySelector('.downvote-button');
+
+        upvoteButton.addEventListener('click', () => handleVote(idea.id, true));
+        downvoteButton.addEventListener('click', () => handleVote(idea.id, false));
     });
 };
-
 
 function createFilterElements() {
     filters.forEach(filterName => {
@@ -134,12 +148,10 @@ function filterIdeas() {
     const selectedFilters = Array.from(document.querySelectorAll('.filter-container input[type="checkbox"]:checked'))
         .map(checkbox => checkbox.value);
 
-
     if (selectedFilters.length === 0) {
         performSearch();
         return;
     }
-
 
     const filterPromises = selectedFilters.map(filter =>
         fetch(`http://localhost:8080/api/v1/ideas/filter?filter=${filter}`)
@@ -149,12 +161,10 @@ function filterIdeas() {
                 }
                 return response.json();
             })
-
     );
 
     Promise.all(filterPromises)
         .then(results => {
-
             let filteredIdeas = [];
             results.forEach(result => {
                 filteredIdeas = filteredIdeas.concat(result);
@@ -166,7 +176,6 @@ function filterIdeas() {
                 ))
             );
 
-
             displayIdeas(uniqueIdeas);
         })
         .catch(error => {
@@ -175,11 +184,49 @@ function filterIdeas() {
         });
 }
 
+async function handleVote(ideaId, isUpvote) {
+    try {
+        const endpoint = isUpvote ? 'upvote' : 'downvote';
+        const response = await fetch(`http://localhost:8080/api/v1/ideas/${ideaId}/${endpoint}`, {
+            method: 'POST'
+        });
+
+        if (!response.ok) {
+            throw new Error("Erro ao votar na ideia.");
+        }
+
+        const updatedIdea = await response.json();
+
+        const ideaCard = document.querySelector(`.idea-card [data-idea-id="${ideaId}"]`).closest('.idea-card');
+        const votesCountSpan = ideaCard.querySelector('.votes-count');
+        votesCountSpan.textContent = updatedIdea.upvotes - updatedIdea.downvotes;
+
+        const voteButtons = document.querySelector(`.idea-card [data-idea-id="${ideaId}"]`).closest('.vote-buttons');
+        const upvoteButton = voteButtons.querySelector('.upvote-button');
+        const downvoteButton = voteButtons.querySelector('.downvote-button');
+
+        if (isUpvote) {
+            upvoteButton.classList.add('upvoted');
+            downvoteButton.classList.remove('downvoted');
+            votesCountSpan.classList.add('upvoted');
+        } else {
+            downvoteButton.classList.add('downvoted');
+            upvoteButton.classList.remove('upvoted');
+            votesCountSpan.classList.add('downvoted');
+        }
+        setTimeout(() => {
+            votesCountSpan.classList.remove('upvoted', 'downvoted');
+        }, 510);
+    } catch (error) {
+        console.error('Erro ao processar o voto:', error);
+        showError("Erro ao votar. Por favor, tente novamente.");
+    }
+}
+
 const performSearch = () => {
     const query = searchInput.value.trim();
     fetchIdeas(query);
 };
-
 
 searchInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {

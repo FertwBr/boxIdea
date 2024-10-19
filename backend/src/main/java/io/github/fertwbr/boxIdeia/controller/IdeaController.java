@@ -1,7 +1,9 @@
 package io.github.fertwbr.boxIdeia.controller;
 
 import io.github.fertwbr.boxIdeia.exceptions.IdeaNotFoundException;
+import io.github.fertwbr.boxIdeia.model.Area;
 import io.github.fertwbr.boxIdeia.model.Idea;
+import io.github.fertwbr.boxIdeia.repository.AreaRepository;
 import io.github.fertwbr.boxIdeia.repository.IdeaRepository;
 import io.github.fertwbr.boxIdeia.service.FilterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.UUID;
@@ -24,6 +27,9 @@ public class IdeaController {
     @Autowired
     private FilterService filterService;
 
+    @Autowired
+    private AreaRepository areaRepository;
+
     @PostMapping
     public ResponseEntity<Idea> createIdea(@RequestBody Idea idea) {
         if (idea.getTitle() == null || idea.getTitle().isBlank() ||
@@ -34,6 +40,14 @@ public class IdeaController {
         if (idea.getName() == null || idea.getName().isBlank()) {
             idea.setName("Anônimo " + UUID.randomUUID().toString().substring(0, 8));
         }
+
+        if (idea.getArea() == null || idea.getArea().getId() == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        Area area = areaRepository.findById(idea.getArea().getId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Área não encontrada"));
+        idea.setArea(area);
 
         filterService.assignFilters(idea);
 
@@ -55,6 +69,15 @@ public class IdeaController {
     public List<Idea> getIdeasByFilter(@RequestParam String filter) {
         return ideaRepository.findByFilter(filter);
     }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Idea> getIdeaById(@PathVariable Long id) {
+        Idea idea = ideaRepository.findById(id)
+                .orElseThrow(() -> new IdeaNotFoundException("Ideia não encontrada com ID: " + id));
+        return new ResponseEntity<>(idea, HttpStatus.OK);
+    }
+
 
     @PostMapping("/{id}/upvote")
     public ResponseEntity<Idea> upvoteIdea(@PathVariable Long id) {

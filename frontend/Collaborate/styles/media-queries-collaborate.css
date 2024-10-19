@@ -1,24 +1,40 @@
 /* Responsividade */
-@media (max-width: 768px) {
-  .collaborate-titulo-input,
-  .collaborate-nome-input,
+@media (max-width: 600px) {
+  main {
+      padding-top: 40px;
+  }
+  .main-container {
+      border-radius: 10px; 
+      margin-bottom: 20px;
+  }
+
+  .input-name-date {
+      flex-direction: column;
+      gap: 0;
+  }
+
+  #submit-form {
+      gap: 10px;
+  }
+
+  .form-group {
+      margin-bottom: 10px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+      font-size: 14px;
+  }
+
   .collaborate-textarea-input {
-    width: 90%; 
+      height: 120px;
   }
-
-  .collaborate-enviar-button {
-    width: 90%; 
+  .robot-image {
+      width: 70%;
   }
-}
+  .bottom-background-container {
 
-@media (max-width: 480px) {
-  .collaborate-titulo-input,
-  .collaborate-nome-input,
-  .collaborate-textarea-input {
-    font-size: 1em; 
-  }
-
-  .collaborate-enviar-button {
-    font-size: 1em; 
+      height: 40%;
   }
 }

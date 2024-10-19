@@ -1,41 +1,80 @@
-/* General styles for the Collaborate page */
 body {
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
-main{
+main {
   margin-top: 50px;
+  background-color: transparent;
+  padding: 20px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  width: 90%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.form-group label,
+.form-group input-container {
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.form-group .required {
+  color: red;
+}
+
+.form-group .optional {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.input-container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
 }
 
 .collaborate-titulo-input,
 .collaborate-nome-input,
-.collaborate-textarea-input {
-  width: 80%;
-  padding: 1rem; 
-  margin: 0.5rem 0;
-  border: 2px solid rgba(76, 107, 196, 0.5); 
-  border-radius: 8px;
+.collaborate-textarea-input,
+.collaborate-select-input,
+.collaborate-date-input {
+  width: 100%;
+  padding: 1.2rem;
+  margin: 0;
+  border: 2px solid rgba(76, 107, 196, 0.5);
+  border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.9);
-  color: #434D57;
+  color: rgba(76, 107, 196, 0.7);
+  font-size: 14px;
+  font-weight: 500;
   transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
   box-sizing: border-box;
 }
 
 .collaborate-titulo-input.error,
 .collaborate-textarea-input.error {
-    border-color: rgba(196, 76, 76, 1);
+  border-color: rgba(196, 76, 76, 1);
 }
 
 .collaborate-titulo-input:focus.error,
-.collaborate-textarea-input:focus.error{
-    box-shadow: 0px 0px 10px rgba(196, 76, 76, 0.8);
+.collaborate-textarea-input:focus.error {
+  box-shadow: 0px 0px 10px rgba(196, 76, 76, 0.8);
 }
-
-
 
 .collaborate-titulo-input::placeholder,
 .collaborate-nome-input::placeholder,
-.collaborate-textarea-input::placeholder{
+.collaborate-textarea-input::placeholder,
+.collaborate-select-input::placeholder,
+.collaborate-date-input::placeholder {
   color: rgba(76, 107, 196, 0.7);
   font-size: 14px;
   font-weight: 500;
@@ -43,91 +82,114 @@ main{
 
 .collaborate-titulo-input:hover,
 .collaborate-nome-input:hover,
-.collaborate-textarea-input:hover {
-  border-color: rgba(76, 107, 196, 1); 
-  background-color: rgba(255, 250, 240, 0.9);
+.collaborate-textarea-input:hover,
+.collaborate-select-input:hover,
+.collaborate-date-input:hover {
+  border-color: rgba(76, 107, 196, 1);
+  background-color: rgba(240, 248, 255, 0.9);
+  box-shadow: 0px 4px 15px rgba(76, 107, 196, 0.3);
 }
 
 .collaborate-titulo-input:focus,
 .collaborate-nome-input:focus,
-.collaborate-textarea-input:focus {
+.collaborate-textarea-input:focus,
+.collaborate-select-input:focus,
+.collaborate-date-input:focus {
   outline: none;
-  border-color: rgba(76, 107, 196, 1); 
-  box-shadow: 0px 4px 15px rgba(76, 107, 196, 0.3);
+  border-color: rgba(76, 107, 196, 1);
+  box-shadow: 0px 4px 20px rgba(76, 107, 196, 0.5);
 }
 
 .collaborate-textarea-input {
   height: 150px;
-  resize: vertical; 
+  resize: vertical;
 }
 
 .collaborate-enviar-button {
-  padding: 0.8rem 1.5rem;
-  font-size: 1.1em;
+  padding: 0.8rem 3rem;
+  font-size: 1.2em;
   font-weight: bold;
-  background: linear-gradient(45deg, rgba(76, 107, 196, 1), rgba(38, 45, 128, 1)); 
+  background: linear-gradient(45deg, rgba(76, 107, 196, 1), rgba(38, 45, 128, 1));
   color: white;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   border: none;
-  border-radius: 10px; 
-  cursor: pointer;
-  transition: transform 0.2s, opacity 0.2s;
+  border-radius: 10px;
+  margin-top: 20px;
+  transition: transform 0.3s, opacity 0.3s, box-shadow 0.3s, background 0.3s;
 }
 
 .collaborate-enviar-button:hover {
   transform: scale(1.05);
   opacity: 0.9;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(45deg, rgba(76, 107, 196, 0.9), rgba(38, 45, 128, 0.9));
 }
 
 .collaborate-enviar-button:active {
-  transform: scale(0.95); 
+  transform: scale(0.95);
   opacity: 0.7;
+  background: linear-gradient(45deg, rgba(76, 107, 196, 0.7), rgba(38, 45, 128, 0.7));
 }
 
 .collaborate-message-container {
-    margin-top: 10px;
-    height: 20px;
+  margin-top: 10px;
+  height: 20px;
 }
 
 .success-message,
 .error-message {
-    display: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: opacity 0.3s ease-in-out; 
-    opacity: 0;
+  display: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
 }
 
 .success-message {
-    background-color: rgba(76, 196, 107, 0.8);
-    color: white;
-    border: 1px solid rgba(76, 196, 107, 1);
+  background-color: rgba(76, 196, 107, 0.8);
+  color: white;
+  border: 1px solid rgba(76, 196, 107, 1);
 }
 
 .error-message {
-    background-color: rgba(196, 76, 76, 0.8);
-    color: white;
-    border: 1px solid rgba(196, 76, 76, 1);
+  background-color: rgba(196, 76, 76, 0.8);
+  color: white;
+  border: 1px solid rgba(196, 76, 76, 1);
 }
 
 .success-message.show,
 .error-message.show {
-    display: block;
-    opacity: 1;
+  display: block;
+  opacity: 1;
 }
 
 .loading-bar {
-    width: 0%;
-    height: 5px;
-    background-color: rgba(76, 107, 196, 0.8);
-    border-radius: 3px;
-    margin-top: 10px;
-    transition: width 0.5s ease-in-out;
-    overflow: hidden; 
+  width: 0%;
+  height: 5px;
+  background-color: rgba(76, 107, 196, 0.8);
+  border-radius: 3px;
+  margin-top: 10px;
+  transition: width 0.5s ease-in-out;
+  overflow: hidden;
 }
 
 .loading-bar.show {
-    width: 100%;
+  width: 100%;
+}
+
+.collaborate-select-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7em top 50%, 0 0;
+  background-size: 0.65em auto, 100%;
+  padding-right: 2.5rem;
+  width: 100%;
+}
+
+.collaborate-date-input {
+  width: 100%;
 }

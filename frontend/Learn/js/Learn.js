@@ -57,10 +57,16 @@ const displayIdeas = (ideas) => {
     ideas.forEach(idea => {
         const ideaCard = document.createElement('div');
         ideaCard.classList.add('idea-card');
+
+        const formattedDate = formatDate(idea.postingDateTime);
+        const experienceDateFormatted = idea.experienceDate ? formatExperienceDate(idea.experienceDate) : '';
+
+
         ideaCard.innerHTML = `
             <h2>${idea.title}</h2>
-            <p><strong>por:</strong> ${idea.name}</p>
+            <p class="author-info"><strong>por:</strong> ${idea.name} • ${formattedDate}</p> <p class="experience-date">${experienceDateFormatted}</p>
             <p>${idea.description}</p>
+
             <div class="vote-buttons">
                 <button class="upvote-button" data-idea-id="${idea.id}">
                     <img src="/frontend/images/Main/icons/up-arrow-icon.svg" alt="Upvote">
@@ -235,3 +241,33 @@ searchInput.addEventListener('keypress', (e) => {
 });
 
 searchIcon.addEventListener('click', performSearch);
+
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diff = now.getTime() - date.getTime();
+
+    const minutes = Math.floor(diff / (1000 * 60));
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+
+    if (years > 0) {
+        return `há ${years} anos`;
+    } else if (days > 0) {
+        return `há ${days}d`;
+    } else if (hours > 0) {
+        return `há ${hours}h`;
+    } else {
+        return `há ${minutes} min`;
+    }
+}
+
+function formatExperienceDate(dateString) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const date = new Date(dateString);
+
+
+    return `Experiência de ${date.toLocaleDateString('pt-BR', options)}`;
+
+}

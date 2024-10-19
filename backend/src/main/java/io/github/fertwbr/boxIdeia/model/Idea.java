@@ -7,6 +7,9 @@ import lombok.Setter;
 import java.util.HashSet;
 import java.util.Set;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 
 @Entity
 @Getter
@@ -24,9 +27,14 @@ public class Idea {
     private int upvotes = 0;
     private int downvotes = 0;
 
+    private LocalDate experienceDate;
+
+    @Column(nullable = false)
+    private LocalDateTime postingDateTime = LocalDateTime.now();
+
     @Column(columnDefinition="TEXT")
     private String description;
-    
+
     @ElementCollection
     @CollectionTable(name = "idea_filters", joinColumns = @JoinColumn(name = "idea_id"))
     @Column(name = "filter")

@@ -39,4 +39,8 @@ public class Idea {
     @CollectionTable(name = "idea_filters", joinColumns = @JoinColumn(name = "idea_id"))
     @Column(name = "filter")
     private Set<String> filters = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "area_id")
+    private Area area;
 }

@@ -78,6 +78,10 @@ public class IdeaController {
         return new ResponseEntity<>(idea, HttpStatus.OK);
     }
 
+    @GetMapping("/areas")
+    public List<Area> getAllAreas() {
+        return areaRepository.findAll();
+    }
 
     @PostMapping("/{id}/upvote")
     public ResponseEntity<Idea> upvoteIdea(@PathVariable Long id) {

@@ -295,3 +295,13 @@ main {
 50% { transform: scale(1.15); }
 100% { transform: scale(1); }
 }
+
+.experience-date {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+.author-info {
+  margin-bottom: 0px;
+}

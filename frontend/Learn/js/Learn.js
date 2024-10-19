@@ -61,12 +61,23 @@ const displayIdeas = (ideas) => {
         const formattedDate = formatDate(idea.postingDateTime);
         const experienceDateFormatted = idea.experienceDate ? formatExperienceDate(idea.experienceDate) : '';
 
+        const experienceDateHTML = idea.experienceDate ? `<p class="experience-date"><span class="material-symbols-outlined">calendar_month</span> ${experienceDateFormatted}</p>` : '';
+
+
 
         ideaCard.innerHTML = `
-            <h2>${idea.title}</h2>
-            <p class="author-info"><strong>por:</strong> ${idea.name} • ${formattedDate}</p> <p class="experience-date">${experienceDateFormatted}</p>
-            <p>${idea.description}</p>
-
+            <div class="idea-header">
+                <h2>${idea.title}</h2>
+            </div>
+            <div class="idea-info">
+                <span class="author-name">${idea.name}</span>
+                <span class="separator">•</span>
+                <span class="posting-date">${formattedDate}</span>
+                <span class="separator">•</span>
+                <span class="area-name">${idea.area.name}</span>
+                ${idea.experienceDate ? `<span class="separator">•</span><span class="experience-date">${experienceDateFormatted}</span>` : ''}
+            </div>
+            <p class="description">${idea.description}</p>
             <div class="vote-buttons">
                 <button class="upvote-button" data-idea-id="${idea.id}">
                     <img src="/frontend/images/Main/icons/up-arrow-icon.svg" alt="Upvote">
@@ -77,6 +88,7 @@ const displayIdeas = (ideas) => {
                 </button>
             </div>
         `;
+        
         ideasSection.appendChild(ideaCard);
 
         const upvoteButton = ideaCard.querySelector('.upvote-button');

@@ -31,39 +31,54 @@
     <!-- Section for welcome message and buttons -->
     <main>
         <section class="main-container">
-            <h1 class="welcome-text">Compartilhe Sua Experiência</h1>
-            <div>
-                <input type="text" class="collaborate-titulo-input" placeholder="Título">
-                <input type="text" class="collaborate-nome-input" placeholder="Digite seu nome (opcional)">
-            </div>
-            <div>
-                <textarea class="collaborate-textarea-input" placeholder="Descrição detalhada da experiência"></textarea>
-            </div>
-            <div class="collaborate-buttons-container">
-                <button class="collaborate-enviar-button">Enviar</button>
-                <div class="loading-bar"></div> 
-                <div class="collaborate-message-container">
-                    <span class="success-message">Ideia enviada com sucesso!</span>
-                    <span class="error-message"></span>
+            <h1 class="welcome-text">Compartilhe Sua Experi&ecirc;ncia</h1>
+            <form id="submit-form">
+                <div class="form-group">
+                    <label for="tituloInput" class="form-label">T&iacute;tulo <span class="required">*</span></label>
+                    <input type="text" id="tituloInput" class="collaborate-titulo-input"
+                        placeholder="Ex: Nova ideia para o marketing" required>
+                    <label for="nameInput" class="form-label">Seu Nome <span class="optional">(opcional)</span></label>
+                    <input type="text" id="nameInput" class="collaborate-nome-input" placeholder="Ex: Seu nome">
+                    <label for="area-select" class="form-label">&Aacute;rea <span class="required">*</span></label>
+                    <select id="area-select" name="area" class="collaborate-select-input" required>
+                        <option value="">Selecione sua &aacute;rea</option>
+                    </select>
+                    <label for="experienceDateInput" class="form-label">Data da Experi&ecirc;ncia <span
+                            class="optional">(opcional)</span></label>
+                    <input type="date" class="collaborate-date-input" id="experienceDateInput">
+                    <label for="descriptionInput" class="form-label">Descri&ccedil;&atilde;o <span class="required">*</span></label>
+                    <textarea id="descriptionInput" class="collaborate-textarea-input"
+                        placeholder="Descreva sua experi&ecirc;ncia em detalhes" required></textarea>
                 </div>
-            </div>
-        </section>
-        <!-- Background images section -->
-        <section class="background-section">
-            <div class="upper-background-container">
-                <div class="upper-square-container">
-                    <img src="/frontend/images/Main/Background/upper-square.svg" alt="Quadrado Superior" class="upper-square">
-                </div>
-            </div>
 
-            <div class="bottom-background-container">
-                <div class="robot-container">
-                    <img src="/frontend/images/Main/Background/robot.svg" alt="Rob&ocirc;" class="robot-image">
+                <div class="collaborate-buttons-container">
+                    <button class="collaborate-enviar-button">Enviar</button>
+                    <div class="loading-bar"></div>
+                    <div class="collaborate-message-container">
+                        <span class="success-message">Ideia enviada com sucesso!</span>
+                        <span class="error-message"></span>
+                    </div>
                 </div>
-                <div class="bottom-square-container">
-                    <img src="/frontend/images/Main/Background/bottom-square.svg" alt="Quadrado Inferior" class="bottom-square">
+            </form>
+
+            <section class="background-section">
+                <div class="upper-background-container">
+                    <div class="upper-square-container">
+                        <img src="/frontend/images/Main/Background/upper-square.svg" alt="Quadrado Superior"
+                            class="upper-square">
+                    </div>
                 </div>
-            </div>
+
+                <div class="bottom-background-container">
+                    <div class="robot-container">
+                        <img src="/frontend/images/Main/Background/robot.svg" alt="Rob&ocirc;" class="robot-image">
+                    </div>
+                    <div class="bottom-square-container">
+                        <img src="/frontend/images/Main/Background/bottom-square.svg" alt="Quadrado Inferior"
+                            class="bottom-square">
+                    </div>
+                </div>
+            </section>
         </section>
     </main>
 

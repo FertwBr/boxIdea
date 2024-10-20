@@ -7,7 +7,10 @@ body {
   align-items: center;
   margin: 0;
   overflow: hidden;
-  background-image: radial-gradient(circle, #9A1BFF 0%, #2B1099 100%);
+  background-image: 
+  radial-gradient(circle, #9A1BFF 0%, #2B1099 100%), 
+  linear-gradient(rgba(10, 25, 41, 0.8), rgba(10, 25, 41, 0.8));
+  background-blend-mode: multiply;
   min-height: 100vh;
 }
 

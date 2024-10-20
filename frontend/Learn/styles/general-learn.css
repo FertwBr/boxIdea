@@ -115,6 +115,34 @@ main {
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 4px 10px rgba(0, 0, 0, 0.3), 0 8px 20px rgba(0, 0, 0, 0.4);
   font-family: 'Roboto', sans-serif;
+  color: #f5f5f5; 
+  overflow-wrap: break-word;
+  line-height: 1.4;
+}
+
+.idea-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.idea-header h2 {
+  margin: 0;
+  color: white;
+  font-size: 1.6em;
+  margin-bottom: 8px;
+}
+
+.idea-info { 
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; 
+  gap: 2px;
+  font-size: 0.85em;
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.7);
+
 }
 
 .idea-card h2 {
@@ -225,6 +253,7 @@ main {
 }
 
 .vote-buttons {
+  margin-top: 15px;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -294,4 +323,50 @@ main {
 0% { transform: scale(1); }
 50% { transform: scale(1.15); }
 100% { transform: scale(1); }
+}
+
+.author-and-date {
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.8);
+
+}
+
+.author-name {
+  font-weight: 600;
+}
+
+.experience-date {
+  white-space: nowrap;
+}
+
+.experience-date .material-symbols-outlined {
+  vertical-align: middle;
+  font-size: 16px;
+  margin-right: 3px;
+}
+
+.area-info {
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 5px;
+  align-self: flex-start;
+}
+
+.area-info .material-symbols-outlined {
+  vertical-align: middle;
+  font-size: 16px;
+  margin-right: 3px;
+}
+
+.separator {
+  margin: 0 3px;
+  color: white;
+  align-self: center; 
+}
+
+.idea-card .description{
+  margin-top: 10px;
+  white-space: pre-wrap;
 }

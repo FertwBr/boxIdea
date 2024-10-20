@@ -1,16 +1,19 @@
-## BoxIdea - v1.2.0
+## BoxIdea - v1.3.0
 
 ## Description
 
-**BoxIdea** is a collaborative platform that empowers employees to submit innovative ideas related to their work environment. It facilitates idea sharing, fosters a culture of innovation, and promotes knowledge exchange within organizations. 
+**BoxIdea** is a collaborative platform designed to empower employees within organizations to submit innovative ideas related to their work environment. It fosters a culture of innovation, encourages knowledge exchange, and facilitates the development of creative solutions.
 
 ## Features
 
-* **Idea Submission:**  Users can submit their ideas with title, detailed description, and optional author's name.
-* **Idea Search:**  Powerful search functionality allows users to find ideas based on keywords in the title and description.
-* **Idea Viewing:**  Users can view ideas in detail, including the title, author's name (if provided), and a comprehensive description.
-* **Idea Filtering:**  Users can refine search results by applying filters related to various themes (e.g., "Creativity," "Innovation").
-* **Voting System:** Users can now upvote or downvote ideas to provide feedback and express their opinions.  The vote score (upvotes - downvotes) is displayed dynamically next to each idea.
+* **Idea Submission:** Users can easily submit their ideas, including a compelling title, a detailed description, and optional information about the author's name.
+* **Idea Search:** A powerful search functionality enables users to discover ideas quickly by searching for keywords within titles and descriptions.
+* **Idea Viewing:**  Users can view ideas in detail, including the title, author's name (if provided), a comprehensive description, and the area of expertise the idea relates to.
+* **Idea Filtering:**  Users can refine search results by applying filters based on various themes, such as "Creativity," "Innovation," "Productivity," "Technology," "Marketing," and "Design." Each idea is categorized with appropriate themes, ensuring accurate filtering.
+* **Voting System:**  A robust voting system allows users to provide feedback on ideas by upvoting or downvoting them. The vote count (upvotes - downvotes) is displayed dynamically, reflecting the community's sentiment towards each idea. 
+* **Experience Details:** (**v1.3.0**)
+    * **Data da Experiência:** Users can now specify the date related to the idea, providing a context for the suggestion.
+    * **Área de Atuação:**  Users can also indicate the area of expertise their idea relates to, further enriching the content and providing clarity to other users.
 
 ## Demo
 
@@ -34,21 +37,23 @@ Here are some images of the BoxIdea interface:
 ![Learn Page 3](/frontend/images/readme/preview-learn-3.png)
 * Voting:
 ![Learn Page 3](/frontend/images/readme/voting-demo.gif)
+
 ## Requirements
 
 ### Functional Requirements
 
 1. **Idea Submission:**
    - Allow users to submit their ideas, including title and detailed description. The author's name is optional.
+   - **v1.3.0**: Implement fields for "Data da Experiência" (Date of Experience) and "Área de Atuação" (Area of Expertise) in the submission form.
 
 2. **Idea Search:**
    - Implement a search tool to find ideas based on keywords in the title and description.
 
 3. **Idea Viewing**:
-   - Display the ideas found in the search, showing the title, author's name (if provided), and the description.
+   - Display the ideas found in the search, showing the title, author's name (if provided), the description, the date of experience, and the area of expertise.
 
 4. **Idea Filtering:**
-   - Implement a filtering system that allows users to refine their search results based on themes, such as "Creativity," "Innovation," "Productivity," "Technology," "Marketing," and "Design."  Each idea should be categorized with appropriate themes to enable accurate filtering.
+   - Implement a filtering system that allows users to refine their search results based on themes, such as "Creativity," "Innovation," "Productivity," "Technology," "Marketing," and "Design." Each idea should be categorized with appropriate themes to enable accurate filtering.
 
 5. **Voting:** 
    - Users should be able to upvote or downvote ideas.  The vote count should be displayed and updated dynamically.

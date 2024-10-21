@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/frontend/Collaborate/styles/general-collaborate.css">
     <link rel="stylesheet" href="/frontend/Home/styles/header.css">
     <link rel="stylesheet" href="/frontend/Home/styles/media-queries.css">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet"> 
     <link rel="icon" type="image/x-icon" href="/frontend/images/favicon.ico">
 </head>
 <body>
@@ -47,8 +48,7 @@
                             class="optional">(opcional)</span></label>
                     <input type="date" class="collaborate-date-input" id="experienceDateInput">
                     <label for="descriptionInput" class="form-label">Descri&ccedil;&atilde;o <span class="required">*</span></label>
-                    <textarea id="descriptionInput" class="collaborate-textarea-input"
-                        placeholder="Descreva sua experi&ecirc;ncia em detalhes" required></textarea>
+                    <div id="editor"></div>
                 </div>
 
                 <div class="collaborate-buttons-container">
@@ -88,6 +88,7 @@
             <p class="footer-text">&copy; 2024 BoxIdea. Todos os direitos reservados.</p>
         </div>
     </footer>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script src="/frontend/Collaborate/js/Collaborate.js"></script>
 </body>
 </html>

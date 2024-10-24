@@ -1,6 +1,5 @@
 const tituloInput = document.getElementById('tituloInput');
 const nomeInput = document.getElementById('nameInput');
-const descricaoInput = document.getElementById('descriptionInput');
 const experienceDateInput = document.getElementById('experienceDateInput');
 const areaSelect = document.getElementById('area-select');
 const enviarButton = document.querySelector('.collaborate-enviar-button');
@@ -24,13 +23,13 @@ enviarButton.addEventListener('click', () => {
   const novaIdeia = {
     title: tituloInput.value,
     name: nomeInput.value,
-    description: descricaoInput.value,
+    description: quill.root.innerHTML, 
     experienceDate: experienceDateInput.value,
     area: { id: parseInt(areaSelect.value)}
   };
 
   tituloInput.classList.remove('error');
-  descricaoInput.classList.remove('error');
+  editor.classList.remove('error');
   areaSelect.classList.remove('error');
   errorMessage.classList.remove('show');
 
@@ -39,7 +38,7 @@ enviarButton.addEventListener('click', () => {
   if (novaIdeia.title === "") {
     errorText = "Por favor, preencha o título.";
     tituloInput.classList.add('error');
-  } else if (novaIdeia.description === "") {
+  } else if (novaIdeia.editor === "") {
     errorText = "Por favor, preencha a descrição.";
     descricaoInput.classList.add('error');
   } else if (areaSelect.value === "") {
@@ -53,7 +52,6 @@ enviarButton.addEventListener('click', () => {
     successMessage.classList.remove('show');
     return;
   }
-
 
   loadingBar.classList.add('show');
 
@@ -83,7 +81,7 @@ enviarButton.addEventListener('click', () => {
 
     tituloInput.value = '';
     nomeInput.value = '';
-    descricaoInput.value = '';
+    quill.root.innerHTML = '';
     experienceDateInput.value = '';
     areaSelect.value = '';
 
@@ -102,5 +100,77 @@ enviarButton.addEventListener('click', () => {
 
     errorMessage.classList.add('show');
     successMessage.classList.remove('show');
+  });
+
+
+});
+
+var quill = new Quill('#editor', {
+  theme: 'snow',
+  placeholder: 'Descreva sua experiência em detalhes',
+  modules: {
+    toolbar: {
+      container: [
+        [{ 'header': [1, 2, false] }],
+        ['bold', 'italic', 'underline', 'strike'],
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        ['link', 'image'],
+        [{ 'align': [] }],
+        ['clean']
+      ],
+      handlers: {
+        'image': function() {
+          // TODO Lógica para inserir imagens
+        }
+      }
+    }
+  }
+});
+// TODO arrumar borda branca
+// TODO arrumar limite maximo do quill
+
+// Estilos para o editor
+quill.root.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+quill.root.style.color = 'rgba(76, 107, 196, 0.7)';
+quill.root.style.padding = '1rem';
+quill.root.style.border = '2px solid rgba(76, 107, 196, 0.5)';
+quill.root.style.borderRadius = '10px';
+quill.root.style.minHeight = '30vh';
+quill.root.style.width = '100%';
+quill.root.style.maxWidth = 'mudar';
+
+// Estilos para a barra de ferramentas
+const toolbar = quill.getModule('toolbar').container;
+toolbar.style.backgroundColor = 'rgba(255, 255, 255, 0.9)'
+toolbar.style.border = '2px solid rgba(76, 107, 196, 0.5)';
+toolbar.style.borderRadius = '10px 10px 10px 10px';
+toolbar.style.padding = '10px';
+
+// Estilos para os dropdowns (selects)
+const dropdowns = toolbar.querySelectorAll('select');
+dropdowns.forEach(dropdown => {
+  dropdown.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+  dropdown.style.color = 'white';
+  dropdown.style.border = 'none';
+  dropdown.style.borderRadius = '5px';
+  dropdown.style.padding = '5px 10px';
+
+  dropdown.style.borderBottom = '2px solid rgba(76, 107, 196, 0.5)';
+});
+
+// Estilos para os botões da barra de ferramentas
+const toolbarButtons = quill.getModule('toolbar').container.querySelectorAll('button, select');
+toolbarButtons.forEach(button => {
+  button.style.color = 'white';
+  button.style.backgroundColor = 'transparent';
+  button.style.border = 'none';
+  button.style.borderRadius = '5px'; 
+  button.style.padding = '5px 10px'; 
+
+  button.addEventListener('mouseover', () => {
+    button.style.backgroundColor = 'rgba(76, 107, 196, 0.5)';
+  });
+  button.addEventListener('mouseout', () => {
+    button.style.backgroundColor = 'transparent';
   });
 });

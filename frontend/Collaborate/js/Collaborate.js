@@ -150,10 +150,9 @@ quill.root.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
 quill.root.style.color = 'rgba(76, 107, 196, 0.7)';
 quill.root.style.padding = '1rem';
 quill.root.style.border = '2px solid rgba(76, 107, 196, 0.5)';
-quill.root.style.borderRadius = '10px';
 quill.root.style.minHeight = '30vh';
 quill.root.style.width = '100%';
-quill.root.style.maxWidth = 'mudar';
+quill.root.style.padding = '1rem';
 
 // Estilos para a barra de ferramentas
 const toolbar = quill.getModule('toolbar').container;

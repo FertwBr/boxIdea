@@ -6,6 +6,8 @@ const enviarButton = document.querySelector('.collaborate-enviar-button');
 const successMessage = document.querySelector('.success-message');
 const errorMessage = document.querySelector('.error-message');
 const loadingBar = document.querySelector('.loading-bar');
+const mainContainer = document.querySelector('submit-form');
+const maxEditorWidth = mainContainer ? mainContainer.clientWidth : '800px'; 
 
 fetch('http://localhost:8080/api/v1/ideas/areas')
   .then(response => response.json())
@@ -151,6 +153,8 @@ quill.root.style.color = 'rgba(76, 107, 196, 0.7)';
 quill.root.style.padding = '1rem';
 quill.root.style.border = '2px solid rgba(76, 107, 196, 0.5)';
 quill.root.style.minHeight = '30vh';
+quill.root.style.maxWidth = maxEditorWidth;
+quill.root.style.margin = 'auto';
 quill.root.style.width = '100%';
 quill.root.style.padding = '1rem';
 

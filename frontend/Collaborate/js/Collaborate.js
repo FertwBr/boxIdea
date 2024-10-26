@@ -119,8 +119,24 @@ var quill = new Quill('#editor', {
         ['clean']
       ],
       handlers: {
-        'image': function() {
-          // TODO Lógica para inserir imagens
+          'image': function() {
+            var range = this.quill.getSelection();
+            if (range) {
+              var input = document.createElement('input');
+              input.setAttribute('type', 'file');
+              input.setAttribute('accept', 'image/*');
+              input.click();
+  
+              input.onchange = function() {
+                if (input.files && input.files[0]) {
+                  var reader = new FileReader();
+                  reader.onload = function(e) {
+                    this.quill.insertEmbed(range.index, 'image', e.target.result);
+                  }.bind(this);
+                  reader.readAsDataURL(input.files[0]);
+                }
+              }.bind(this);
+          }
         }
       }
     }

@@ -6,8 +6,8 @@ const enviarButton = document.querySelector('.collaborate-enviar-button');
 const successMessage = document.querySelector('.success-message');
 const errorMessage = document.querySelector('.error-message');
 const loadingBar = document.querySelector('.loading-bar');
-const mainContainer = document.querySelector('submit-form');
-const maxEditorWidth = mainContainer ? mainContainer.clientWidth : '800px'; 
+const mainContainer = document.querySelector('.main-container');
+const maxEditorWidth = mainContainer ? `${mainContainer.clientWidth}px` : '800px'; 
 
 fetch('http://localhost:8080/api/v1/ideas/areas')
   .then(response => response.json())
@@ -154,16 +154,16 @@ quill.root.style.padding = '1rem';
 quill.root.style.border = '2px solid rgba(76, 107, 196, 0.5)';
 quill.root.style.minHeight = '30vh';
 quill.root.style.maxWidth = maxEditorWidth;
-quill.root.style.margin = 'auto';
-quill.root.style.width = '100%';
-quill.root.style.padding = '1rem';
+quill.root.style.margin = '0 auto';
 
 // Estilos para a barra de ferramentas
 const toolbar = quill.getModule('toolbar').container;
-toolbar.style.backgroundColor = 'rgba(255, 255, 255, 0.9)'
+toolbar.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
 toolbar.style.border = '2px solid rgba(76, 107, 196, 0.5)';
-toolbar.style.borderRadius = '10px 10px 10px 10px';
+toolbar.style.borderRadius = '10px';
 toolbar.style.padding = '10px';
+toolbar.style.maxWidth = maxEditorWidth;
+toolbar.style.margin = '0 auto';
 
 // Estilos para os dropdowns (selects)
 const dropdowns = toolbar.querySelectorAll('select');
@@ -192,4 +192,10 @@ toolbarButtons.forEach(button => {
   button.addEventListener('mouseout', () => {
     button.style.backgroundColor = 'transparent';
   });
+});
+
+window.addEventListener('resize', () => {
+  const updatedMaxWidth = mainContainer ? `${mainContainer.clientWidth}px` : '800px';
+  quill.root.style.maxWidth = updatedMaxWidth;
+  toolbar.style.maxWidth = updatedMaxWidth;
 });

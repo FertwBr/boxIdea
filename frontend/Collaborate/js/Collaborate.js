@@ -144,10 +144,7 @@ var quill = new Quill('#editor', {
     }
   }
 });
-// TODO arrumar borda branca
-// TODO arrumar limite maximo do quill
 
-// Estilos para o editor
 quill.root.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
 quill.root.style.color = 'rgba(76, 107, 196, 0.7)';
 quill.root.style.padding = '1rem';
@@ -156,7 +153,7 @@ quill.root.style.minHeight = '30vh';
 quill.root.style.maxWidth = maxEditorWidth;
 quill.root.style.margin = '0 auto';
 
-// Estilos para a barra de ferramentas
+
 const toolbar = quill.getModule('toolbar').container;
 toolbar.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
 toolbar.style.border = '2px solid rgba(76, 107, 196, 0.5)';
@@ -165,7 +162,6 @@ toolbar.style.padding = '10px';
 toolbar.style.maxWidth = maxEditorWidth;
 toolbar.style.margin = '0 auto';
 
-// Estilos para os dropdowns (selects)
 const dropdowns = toolbar.querySelectorAll('select');
 dropdowns.forEach(dropdown => {
   dropdown.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
@@ -177,7 +173,6 @@ dropdowns.forEach(dropdown => {
   dropdown.style.borderBottom = '2px solid rgba(76, 107, 196, 0.5)';
 });
 
-// Estilos para os botões da barra de ferramentas
 const toolbarButtons = quill.getModule('toolbar').container.querySelectorAll('button, select');
 toolbarButtons.forEach(button => {
   button.style.color = 'white';

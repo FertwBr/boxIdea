@@ -116,31 +116,9 @@ var quill = new Quill('#editor', {
         [{ 'header': [1, 2, false] }],
         ['bold', 'italic', 'underline', 'strike'],
         [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-        ['link', 'image'],
         [{ 'align': [] }],
         ['clean']
       ],
-      handlers: {
-          'image': function() {
-            var range = this.quill.getSelection();
-            if (range) {
-              var input = document.createElement('input');
-              input.setAttribute('type', 'file');
-              input.setAttribute('accept', 'image/*');
-              input.click();
-  
-              input.onchange = function() {
-                if (input.files && input.files[0]) {
-                  var reader = new FileReader();
-                  reader.onload = function(e) {
-                    this.quill.insertEmbed(range.index, 'image', e.target.result);
-                  }.bind(this);
-                  reader.readAsDataURL(input.files[0]);
-                }
-              }.bind(this);
-          }
-        }
-      }
     }
   }
 });

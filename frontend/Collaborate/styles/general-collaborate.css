@@ -9,7 +9,11 @@ main {
   display: grid;
   place-items: center;
   position: relative;
-  width: 90%;
+  max-width: 65%;
+}
+
+.submit-form{
+  max-width: 65%;
 }
 
 .form-group {
@@ -44,7 +48,6 @@ main {
 
 .collaborate-titulo-input,
 .collaborate-nome-input,
-.collaborate-textarea-input,
 .collaborate-select-input,
 .collaborate-date-input {
   width: 100%;
@@ -60,19 +63,16 @@ main {
   box-sizing: border-box;
 }
 
-.collaborate-titulo-input.error,
-.collaborate-textarea-input.error {
+.collaborate-titulo-input.error {
   border-color: rgba(196, 76, 76, 1);
 }
 
-.collaborate-titulo-input:focus.error,
-.collaborate-textarea-input:focus.error {
+.collaborate-titulo-input:focus.error {
   box-shadow: 0px 0px 10px rgba(196, 76, 76, 0.8);
 }
 
 .collaborate-titulo-input::placeholder,
 .collaborate-nome-input::placeholder,
-.collaborate-textarea-input::placeholder,
 .collaborate-select-input::placeholder,
 .collaborate-date-input::placeholder {
   color: rgba(76, 107, 196, 0.7);
@@ -82,7 +82,6 @@ main {
 
 .collaborate-titulo-input:hover,
 .collaborate-nome-input:hover,
-.collaborate-textarea-input:hover,
 .collaborate-select-input:hover,
 .collaborate-date-input:hover {
   border-color: rgba(76, 107, 196, 1);
@@ -92,17 +91,11 @@ main {
 
 .collaborate-titulo-input:focus,
 .collaborate-nome-input:focus,
-.collaborate-textarea-input:focus,
 .collaborate-select-input:focus,
 .collaborate-date-input:focus {
   outline: none;
   border-color: rgba(76, 107, 196, 1);
   box-shadow: 0px 4px 20px rgba(76, 107, 196, 0.5);
-}
-
-.collaborate-textarea-input {
-  height: 150px;
-  resize: vertical;
 }
 
 .collaborate-enviar-button {

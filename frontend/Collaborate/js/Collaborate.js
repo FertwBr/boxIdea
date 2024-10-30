@@ -1,12 +1,13 @@
 const tituloInput = document.getElementById('tituloInput');
 const nomeInput = document.getElementById('nameInput');
-const descricaoInput = document.getElementById('descriptionInput');
 const experienceDateInput = document.getElementById('experienceDateInput');
 const areaSelect = document.getElementById('area-select');
 const enviarButton = document.querySelector('.collaborate-enviar-button');
 const successMessage = document.querySelector('.success-message');
 const errorMessage = document.querySelector('.error-message');
 const loadingBar = document.querySelector('.loading-bar');
+const mainContainer = document.querySelector('.main-container');
+const maxEditorWidth = mainContainer ? `${mainContainer.clientWidth}px` : '800px'; 
 
 fetch('http://localhost:8080/api/v1/ideas/areas')
   .then(response => response.json())
@@ -24,13 +25,13 @@ enviarButton.addEventListener('click', () => {
   const novaIdeia = {
     title: tituloInput.value,
     name: nomeInput.value,
-    description: descricaoInput.value,
+    description: quill.root.innerHTML, 
     experienceDate: experienceDateInput.value,
     area: { id: parseInt(areaSelect.value)}
   };
 
   tituloInput.classList.remove('error');
-  descricaoInput.classList.remove('error');
+  editor.classList.remove('error');
   areaSelect.classList.remove('error');
   errorMessage.classList.remove('show');
 
@@ -39,7 +40,7 @@ enviarButton.addEventListener('click', () => {
   if (novaIdeia.title === "") {
     errorText = "Por favor, preencha o título.";
     tituloInput.classList.add('error');
-  } else if (novaIdeia.description === "") {
+  } else if (novaIdeia.editor === "") {
     errorText = "Por favor, preencha a descrição.";
     descricaoInput.classList.add('error');
   } else if (areaSelect.value === "") {
@@ -53,7 +54,6 @@ enviarButton.addEventListener('click', () => {
     successMessage.classList.remove('show');
     return;
   }
-
 
   loadingBar.classList.add('show');
 
@@ -83,7 +83,7 @@ enviarButton.addEventListener('click', () => {
 
     tituloInput.value = '';
     nomeInput.value = '';
-    descricaoInput.value = '';
+    quill.root.innerHTML = '';
     experienceDateInput.value = '';
     areaSelect.value = '';
 
@@ -103,4 +103,72 @@ enviarButton.addEventListener('click', () => {
     errorMessage.classList.add('show');
     successMessage.classList.remove('show');
   });
+
+
+});
+
+var quill = new Quill('#editor', {
+  theme: 'snow',
+  placeholder: 'Descreva sua experiência em detalhes',
+  modules: {
+    toolbar: {
+      container: [
+        [{ 'header': [1, 2, false] }],
+        ['bold', 'italic', 'underline', 'strike'],
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'align': [] }],
+        ['clean']
+      ],
+    }
+  }
+});
+
+quill.root.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+quill.root.style.color = 'rgba(76, 107, 196, 0.7)';
+quill.root.style.padding = '1rem';
+quill.root.style.border = '2px solid rgba(76, 107, 196, 0.5)';
+quill.root.style.minHeight = '30vh';
+quill.root.style.maxWidth = maxEditorWidth;
+quill.root.style.margin = '0 auto';
+
+
+const toolbar = quill.getModule('toolbar').container;
+toolbar.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+toolbar.style.border = '2px solid rgba(76, 107, 196, 0.5)';
+toolbar.style.borderRadius = '10px';
+toolbar.style.padding = '10px';
+toolbar.style.maxWidth = maxEditorWidth;
+toolbar.style.margin = '0 auto';
+
+const dropdowns = toolbar.querySelectorAll('select');
+dropdowns.forEach(dropdown => {
+  dropdown.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+  dropdown.style.color = 'white';
+  dropdown.style.border = 'none';
+  dropdown.style.borderRadius = '5px';
+  dropdown.style.padding = '5px 10px';
+
+  dropdown.style.borderBottom = '2px solid rgba(76, 107, 196, 0.5)';
+});
+
+const toolbarButtons = quill.getModule('toolbar').container.querySelectorAll('button, select');
+toolbarButtons.forEach(button => {
+  button.style.color = 'white';
+  button.style.backgroundColor = 'transparent';
+  button.style.border = 'none';
+  button.style.borderRadius = '5px'; 
+  button.style.padding = '5px 10px'; 
+
+  button.addEventListener('mouseover', () => {
+    button.style.backgroundColor = 'rgba(76, 107, 196, 0.5)';
+  });
+  button.addEventListener('mouseout', () => {
+    button.style.backgroundColor = 'transparent';
+  });
+});
+
+window.addEventListener('resize', () => {
+  const updatedMaxWidth = mainContainer ? `${mainContainer.clientWidth}px` : '800px';
+  quill.root.style.maxWidth = updatedMaxWidth;
+  toolbar.style.maxWidth = updatedMaxWidth;
 });

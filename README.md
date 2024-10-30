@@ -1,4 +1,4 @@
-## BoxIdea - v1.3.0
+## BoxIdea - v1.3.1
 
 ## Description
 
@@ -8,12 +8,14 @@
 
 * **Idea Submission:** Users can easily submit their ideas, including a compelling title, a detailed description, and optional information about the author's name.
 * **Idea Search:** A powerful search functionality enables users to discover ideas quickly by searching for keywords within titles and descriptions.
-* **Idea Viewing:**  Users can view ideas in detail, including the title, author's name (if provided), a comprehensive description, and the area of expertise the idea relates to.
-* **Idea Filtering:**  Users can refine search results by applying filters based on various themes, such as "Creativity," "Innovation," "Productivity," "Technology," "Marketing," and "Design." Each idea is categorized with appropriate themes, ensuring accurate filtering.
-* **Voting System:**  A robust voting system allows users to provide feedback on ideas by upvoting or downvoting them. The vote count (upvotes - downvotes) is displayed dynamically, reflecting the community's sentiment towards each idea. 
-* **Experience Details:** (**v1.3.0**)
-    * **Data da Experiência:** Users can now specify the date related to the idea, providing a context for the suggestion.
-    * **Área de Atuação:**  Users can also indicate the area of expertise their idea relates to, further enriching the content and providing clarity to other users.
+* **Idea Viewing:** Users can view ideas in detail, including the title, author's name (if provided), a comprehensive description, and the area of expertise the idea relates to.
+* **Idea Filtering:** Users can refine search results by applying filters based on various themes, such as "Creativity," "Innovation," "Productivity," "Technology," "Marketing," and "Design."  Each idea is categorized with appropriate themes, ensuring accurate filtering.
+* **Voting System:** A robust voting system allows users to provide feedback on ideas by upvoting or downvoting them. The vote count (upvotes - downvotes) is displayed dynamically, reflecting the community's sentiment towards each idea. 
+* **Experience Details:**
+    * **Data da Experiência:** Users can now specify the date related to the idea, providing context for the suggestion.
+    * **Área de Atuação:** Users can also indicate the area of expertise their idea relates to, further enriching the content and providing clarity to other users.
+* **Rich Text Editor (v1.3.1):**
+    * The description field now uses a rich text editor, allowing users to format their text with options like bold, italics, underline, lists, and text alignment for improved clarity and presentation.  Image and link uploads are temporarily disabled and will be restored in a future release.
 
 ## Demo
 
@@ -31,12 +33,12 @@ Here are some images of the BoxIdea interface:
 
 * Search:
 ![Learn Page 1](/frontend/images/readme/preview-learn-1.png)
-* Search + Ideias:
-![Learn Page 2](/frontend/images/readme/preview-learn-2.png)
-* Filters:
-![Learn Page 3](/frontend/images/readme/preview-learn-3.png)
-* Voting:
-![Learn Page 3](/frontend/images/readme/voting-demo.gif)
+    * Search + Ideas:
+    ![Learn Page 2](/frontend/images/readme/preview-learn-2.png)
+    * Filters:
+    ![Learn Page 3](/frontend/images/readme/preview-learn-3.png)
+    * Voting:
+    ![Learn Page 3](/frontend/images/readme/voting-demo.gif)
 
 ## Requirements
 

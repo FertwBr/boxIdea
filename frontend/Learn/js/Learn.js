@@ -66,32 +66,34 @@ const displayIdeas = (ideas) => {
 
 
         ideaCard.innerHTML = `
-        <div class="idea-header">
-            <h2>${idea.title}</h2>
-        </div>
-        <div class="idea-info">
-            <span class="author-name">${idea.name}</span>
-            <span class="separator">•</span>
-            <span class="posting-date">${formattedDate}</span>
-            <span class="separator">•</span>
-            <span class="area-name">${idea.area.name}</span>
-            ${idea.experienceDate ? `<span class="separator">•</span><span class="experience-date">${experienceDateFormatted}</span>` : ''}
-        </div>
-        <div class="description-container">
-            <p class="description">${idea.description}</p>
-        </div>
-        <button class="expand-button">Expandir</button>
-        <div class="vote-buttons">
-            <button class="upvote-button" data-idea-id="${idea.id}">
-                <img src="/frontend/images/Main/icons/up-arrow-icon.svg" alt="Upvote">
-            </button>
-            <span class="votes-count">${idea.upvotes - idea.downvotes}</span>
-            <button class="downvote-button" data-idea-id="${idea.id}">
-                <img src="/frontend/images/Main/icons/down-arrow-icon.svg" alt="Downvote">
-            </button>
-        </div>
-    `;
-        
+            <div class="idea-header">
+                <h2>${idea.title}</h2>
+                <button class="expand-button">
+                    <img src="/frontend/images/Main/icons/arrow-expand-icon.svg" alt="Expandir">
+                </button>
+            </div>
+            <div class="idea-info">
+                <span class="author-name">${idea.name}</span>
+                <span class="separator">•</span>
+                <span class="posting-date">${formattedDate}</span>
+                <span class="separator">•</span>
+                <span class="area-name">${idea.area.name}</span>
+                ${idea.experienceDate ? `<span class="separator">•</span><span class="experience-date">${experienceDateFormatted}</span>` : ''}
+            </div>
+            <div class="description-container">
+                <p class="description">${idea.description}</p>
+            </div>
+            <div class="vote-buttons">
+                <button class="upvote-button" data-idea-id="${idea.id}">
+                    <img src="/frontend/images/Main/icons/up-arrow-icon.svg" alt="Upvote">
+                </button>
+                <span class="votes-count">${idea.upvotes - idea.downvotes}</span>
+                <button class="downvote-button" data-idea-id="${idea.id}">
+                    <img src="/frontend/images/Main/icons/down-arrow-icon.svg" alt="Downvote">
+                </button>
+            </div>
+        `;
+
         ideasSection.appendChild(ideaCard);
 
         const upvoteButton = ideaCard.querySelector('.upvote-button');
@@ -102,16 +104,36 @@ const displayIdeas = (ideas) => {
 
         const descriptionContainer = ideaCard.querySelector('.description-container');
         const expandButton = ideaCard.querySelector('.expand-button');
+        const expandIcon = expandButton.querySelector('img');
+        const description = ideaCard.querySelector('.description')
+
 
         let isExpanded = false;
+
+        if (description.scrollHeight > 100) {
+            expandButton.style.display = 'flex';
+
+            const fadeOut = document.createElement('div');
+            fadeOut.classList.add('fade-out');
+            descriptionContainer.appendChild(fadeOut);
+            
+        } else {
+            expandButton.style.display = 'none';
+        }
+
         expandButton.addEventListener('click', () => {
             isExpanded = !isExpanded;
+
             if (isExpanded) {
-                descriptionContainer.style.maxHeight = 'none';
-                expandButton.textContent = 'Minimizar';
+                descriptionContainer.style.maxHeight = descriptionContainer.scrollHeight + 'px';
+                expandIcon.src = '/frontend/images/Main/icons/arrow-collapse-icon.svg';
+                expandIcon.alt = 'Minimizar';
+                expandButton.classList.add('expanded');
             } else {
                 descriptionContainer.style.maxHeight = '100px';
-                expandButton.textContent = 'Expandir';
+                expandIcon.src = '/frontend/images/Main/icons/arrow-expand-icon.svg';
+                expandIcon.alt = 'Expandir';
+                expandButton.classList.remove('expanded');
             }
         });
     });

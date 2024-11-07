@@ -372,24 +372,55 @@ main {
 }
 
 .description-container {
-  max-height: 100px; 
+  max-height: 100px;
   overflow: hidden;
-  transition: max-height 0.3s ease-in-out; 
+  transition: max-height 0.2s ease-in-out;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.description-container.expanded {
+  max-height: none;
 }
 
 .expand-button {
-background-color: transparent; 
-border: none;                      
-color: rgba(76, 107, 196, 1);    
-cursor: pointer;                  
-font-size: 1em;                     
-font-weight: bold;                 
-outline: none;                     
-padding: 0;                        
-text-decoration: underline;     
-transition: color 0.3s ease;      
+  position: absolute;
+  top: 5px;
+  right: 5px; 
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  transition: transform 0.2s ease-in-out; 
+  display: flex;
+  align-items: center;
+}
+
+.expand-button img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease-in-out; 
 }
 
 .expand-button:hover {
-color: #9A1BFF;                   
+  transform: scale(1.1);
+}
+
+.expand-button:hover img {
+  filter: brightness(0.8) drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+}
+
+.expand-button.expanded img {
+  transform: rotate(180deg);
+}
+
+.description-container .fade-out { 
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(to bottom, transparent, rgba(10, 25, 41, 0.8));
+  pointer-events: none;
 }

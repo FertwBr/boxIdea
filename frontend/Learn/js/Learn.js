@@ -66,28 +66,31 @@ const displayIdeas = (ideas) => {
 
 
         ideaCard.innerHTML = `
-            <div class="idea-header">
-                <h2>${idea.title}</h2>
-            </div>
-            <div class="idea-info">
-                <span class="author-name">${idea.name}</span>
-                <span class="separator">•</span>
-                <span class="posting-date">${formattedDate}</span>
-                <span class="separator">•</span>
-                <span class="area-name">${idea.area.name}</span>
-                ${idea.experienceDate ? `<span class="separator">•</span><span class="experience-date">${experienceDateFormatted}</span>` : ''}
-            </div>
+        <div class="idea-header">
+            <h2>${idea.title}</h2>
+        </div>
+        <div class="idea-info">
+            <span class="author-name">${idea.name}</span>
+            <span class="separator">•</span>
+            <span class="posting-date">${formattedDate}</span>
+            <span class="separator">•</span>
+            <span class="area-name">${idea.area.name}</span>
+            ${idea.experienceDate ? `<span class="separator">•</span><span class="experience-date">${experienceDateFormatted}</span>` : ''}
+        </div>
+        <div class="description-container">
             <p class="description">${idea.description}</p>
-            <div class="vote-buttons">
-                <button class="upvote-button" data-idea-id="${idea.id}">
-                    <img src="/frontend/images/Main/icons/up-arrow-icon.svg" alt="Upvote">
-                </button>
-                <span class="votes-count">${idea.upvotes - idea.downvotes}</span>
-                <button class="downvote-button" data-idea-id="${idea.id}">
-                    <img src="/frontend/images/Main/icons/down-arrow-icon.svg" alt="Downvote">
-                </button>
-            </div>
-        `;
+        </div>
+        <button class="expand-button">Expandir</button>
+        <div class="vote-buttons">
+            <button class="upvote-button" data-idea-id="${idea.id}">
+                <img src="/frontend/images/Main/icons/up-arrow-icon.svg" alt="Upvote">
+            </button>
+            <span class="votes-count">${idea.upvotes - idea.downvotes}</span>
+            <button class="downvote-button" data-idea-id="${idea.id}">
+                <img src="/frontend/images/Main/icons/down-arrow-icon.svg" alt="Downvote">
+            </button>
+        </div>
+    `;
         
         ideasSection.appendChild(ideaCard);
 
@@ -96,6 +99,21 @@ const displayIdeas = (ideas) => {
 
         upvoteButton.addEventListener('click', () => handleVote(idea.id, true));
         downvoteButton.addEventListener('click', () => handleVote(idea.id, false));
+
+        const descriptionContainer = ideaCard.querySelector('.description-container');
+        const expandButton = ideaCard.querySelector('.expand-button');
+
+        let isExpanded = false;
+        expandButton.addEventListener('click', () => {
+            isExpanded = !isExpanded;
+            if (isExpanded) {
+                descriptionContainer.style.maxHeight = 'none';
+                expandButton.textContent = 'Minimizar';
+            } else {
+                descriptionContainer.style.maxHeight = '100px';
+                expandButton.textContent = 'Expandir';
+            }
+        });
     });
 };
 

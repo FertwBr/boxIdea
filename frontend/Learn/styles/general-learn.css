@@ -370,3 +370,26 @@ main {
   margin-top: 10px;
   white-space: pre-wrap;
 }
+
+.description-container {
+  max-height: 100px; 
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out; 
+}
+
+.expand-button {
+background-color: transparent; 
+border: none;                      
+color: rgba(76, 107, 196, 1);    
+cursor: pointer;                  
+font-size: 1em;                     
+font-weight: bold;                 
+outline: none;                     
+padding: 0;                        
+text-decoration: underline;     
+transition: color 0.3s ease;      
+}
+
+.expand-button:hover {
+color: #9A1BFF;                   
+}

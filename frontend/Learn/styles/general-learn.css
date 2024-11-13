@@ -415,12 +415,12 @@ main {
   transform: rotate(180deg);
 }
 
-.description-container .fade-out { 
+.description-container .fade-out {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 30px;
-  background: linear-gradient(to bottom, transparent, rgba(10, 25, 41, 0.8));
+  height: 50px;
+  background: linear-gradient(to bottom, transparent, rgba(10, 25, 41, 1));
   pointer-events: none;
 }
